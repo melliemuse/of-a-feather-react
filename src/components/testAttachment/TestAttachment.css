@@ -1,0 +1,20 @@
+.center_noflex {
+    margin: 0 auto;
+    width: 75%;
+}
+.question {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+fieldset {
+    margin: 5px;
+    padding: 20px 30px 30px;
+}
+label { 
+    width: 10%;
+}
+.question_title {
+    margin: 0 auto 20px;
+    width: 900px;
+}

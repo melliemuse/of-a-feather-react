@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Home from './home/Home'
 import TestAttachment from './testAttachment/TestAttachment'
+import Register from './auth/Register'
 
 
 
@@ -19,6 +20,13 @@ export default class ApplicationViews extends Component {
     <Route path="/assessment" render={props => {  
         // if (this.props.isAuthenticated()) {
             return <TestAttachment {...props}/>
+        // } else {
+        //     return <Redirect to="/login" />
+        // }
+    }}/>
+    <Route path="/register" render={props => {  
+        // if (this.props.isAuthenticated()) {
+            return <Register {...props}/>
         // } else {
         //     return <Redirect to="/login" />
         // }

@@ -9,40 +9,27 @@ export default class TestItem extends Component {
             <>
                 <fieldset>
                     <div className="question">
-                        <h6 className="question_title"> {this.props.high_avoidance_question || this.props.high_anxiety_question || this.props.low_avoidance_question || this.props.low_anxiety_question} </h6>
+                        <h6 className="question_title"> {this.props.id}. {this.props.high_avoidance_question || this.props.high_anxiety_question || this.props.low_avoidance_question || this.props.low_anxiety_question} </h6>
                     
-                <input
+                
+                        <input
                     type="radio"
                     id={this.props.id}
-                    value={parseInt(this.props.scores[0])}
+                    value={parseInt(this.props.scores[6])}
                     name={this.props.values}
                     onChange={this.props.handleSelection}>
                 </input>
-                <label>Strongly Agree</label>
+                <label>Strongly Disagree</label>
+               
                 <input
                     type="radio"
                     id={this.props.id}
-                    value={parseInt(this.props.scores[1])}
+                    value={parseInt(this.props.scores[5])}
                     name={this.props.values}
                     onChange={this.props.handleSelection}>
                 </input>
-                <label>Agree</label>
-                <input
-                    type="radio"
-                    id={this.props.id}
-                    value={parseInt(this.props.scores[2])}
-                    name={this.props.values}
-                    onChange={this.props.handleSelection}>
-                </input>
-                <label>Somewhat Agree</label>
-                <input
-                    type="radio"
-                    id={this.props.id}
-                    value={parseInt(this.props.scores[3])}
-                    name={this.props.values}
-                    onChange={this.props.handleSelection}>
-                </input>
-                <label>Neutral</label>
+                <label>Disagree</label>
+               
                 <input
                     type="radio"
                     id={this.props.id}
@@ -54,19 +41,35 @@ export default class TestItem extends Component {
                 <input
                     type="radio"
                     id={this.props.id}
-                    value={parseInt(this.props.scores[5])}
+                    value={parseInt(this.props.scores[3])}
                     name={this.props.values}
                     onChange={this.props.handleSelection}>
                 </input>
-                <label>Disagree</label>
+                <label>Neutral</label>
                 <input
                     type="radio"
                     id={this.props.id}
-                    value={parseInt(this.props.scores[6])}
+                    value={parseInt(this.props.scores[2])}
                     name={this.props.values}
                     onChange={this.props.handleSelection}>
                 </input>
-                <label>Strongly Disagree</label>
+                <label>Somewhat Agree</label>
+                <input
+                    type="radio"
+                    id={this.props.id}
+                    value={parseInt(this.props.scores[1])}
+                    name={this.props.values}
+                    onChange={this.props.handleSelection}>
+                </input>
+                <label>Agree</label>
+                <input
+                    type="radio"
+                    id={this.props.id}
+                    value={parseInt(this.props.scores[0])}
+                    name={this.props.values}
+                    onChange={this.props.handleSelection}>
+                </input>
+                <label>Strongly Agree</label>
                 </div>
                 </fieldset>
             </>

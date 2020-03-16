@@ -16,7 +16,7 @@ export default class TestAttachment extends Component {
             low_avoidance_questions: ["I feel comfortable sharing my private thoughts and feelings with my partner.", "I am very comfortable being close to romantic partners.", "I find it relatively easy to get close to my partner.", "It's not difficult for me to get close to my partner.", "I usually discuss my problems and concerns with my partner.", " It helps to turn to my romantic partner in times of need.", "I tell my partner just about everything.", "I talk things over with my partner.", "I feel comfortable depending on romantic partners.", "I find it easy to depend on romantic partners.", "It's easy for me to be affectionate with my partner.", "My partner really understands me and my needs."],
         },
         values: ["anxiousValue", "avoidantValue"],
-        scores: [1, 2, 3, 4, 5, 6, 7],
+        scores: [7, 6, 5, 4, 3, 2, 1],
         responses: ["Strongly Agree", "Agree", "Somewhat Agree", "Neutral", "Somewhat Disagree", "Disagree"]
     }
 

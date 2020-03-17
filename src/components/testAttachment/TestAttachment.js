@@ -79,6 +79,7 @@ export default class TestAttachment extends Component {
 
     handleSubmit = () => {
         console.log("handle submit fired")
+        
         const secure_id = 1
         const anxious_id = 2
         const avoidant_id = 3

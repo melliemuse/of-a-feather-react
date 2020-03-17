@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-import { withRouter } from "react-router-dom"
 import { register } from "../helpers/simpleAuth"
-import TestAttachment from "../testAttachment/TestAttachment"
 
 class Register extends Component {
 
@@ -15,15 +13,16 @@ class Register extends Component {
         attachment_style_id: 1,
         location: "",
         bio: "",
-        gender: "",
-        gender_preference: "",
+        gender: "female",
+        gender_preference: "female",
         kids: 0,
         smoker: 0,
         looking_for: "relationship",
         interests: "",
         profile_pic: "",
         age: null,
-        age_range: "",
+        age_range1: null,
+        age_range2: null,
         tagline: "",
         been_reported: 0
     }
@@ -46,13 +45,13 @@ class Register extends Component {
             "bio": this.state.bio,
             "gender": this.state.gender,
             "gender_preference": this.state.gender_preference,
-            "kids": this.state.kids,
-            "smoker": this.state.smoker,
+            "kids": parseInt(this.state.kids),
+            "smoker": parseInt(this.state.smoker),
             "looking_for": this.state.looking_for,
             "interests": this.state.interests,
             "profile_pic": this.state.profile_pic,
-            "age": this.state.age,
-            "age_range": this.state.age_range,
+            "age": parseInt(this.state.age),
+            "age_range": `${this.state.age_range1} - ${this.state.age_range2}`,
             "tagline": this.state.tagline,
             "been_reported": this.state.been_reported,
             "email": this.state.email,
@@ -120,21 +119,38 @@ class Register extends Component {
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputGender"> Gender </label>
-                        <input onChange={this.handleInputChange}
-                            id="gender"
-                            type="text"
-                            name="gender"
+                        <select
                             className="form-control"
-                            required />
+                            id="gender"
+                            onChange={this.handleInputChange}>
+                            <option value="female">
+                                Female
+                  </option>
+                            <option value="male">
+                                Male
+                  </option>
+                            <option value="other">
+                                Other
+                  </option>
+                        </select>
+
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputGenderPreference"> Gender Preference </label>
-                        <input onChange={this.handleInputChange}
-                            id="gender_preference"
-                            type="text"
-                            name="gender_preference"
+                        <select
                             className="form-control"
-                            required />
+                            id="gender_preference"
+                            onChange={this.handleInputChange}>
+                            <option value="female">
+                                Female
+                  </option>
+                            <option value="male">
+                                Male
+                  </option>
+                            <option value="all">
+                                All
+                  </option>
+                        </select>
                     </fieldset>
                     <fieldset>
                         <label>Do you have kids?</label>
@@ -206,7 +222,7 @@ class Register extends Component {
                         <label htmlFor="inputAge"> Age </label>
                         <input onChange={this.handleInputChange}
                             id="age"
-                            type="text"
+                            type="number"
                             name="age"
                             className="form-control"
                             required />
@@ -214,8 +230,16 @@ class Register extends Component {
                     <fieldset>
                         <label htmlFor="inputAgeRange"> Age Range </label>
                         <input onChange={this.handleInputChange}
-                            id="age_range"
-                            type="text"
+                            id="age_range1"
+                            type="number"
+                            min="13" max="100" step="1"
+                            name="age_range"
+                            className="form-control"
+                            required />
+                        <input onChange={this.handleInputChange}
+                            id="age_range2"
+                            type="number"
+                            min="13" max="100" step="1"
                             name="age_range"
                             className="form-control"
                             required />

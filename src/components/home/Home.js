@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css'
+import APIManager from '../helpers/APIManager'
 
 export default class Home extends Component {
     state = {
@@ -7,7 +8,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-
+        
     }
 
     render() {

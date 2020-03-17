@@ -17,7 +17,7 @@ export default class ApplicationViews extends Component {
         //     return <Redirect to="/login" />
         // }
     }}/>
-    <Route path="/assessment" render={props => {  
+    <Route path="/assessment/" render={props => {  
         // if (this.props.isAuthenticated()) {
             return <TestAttachment {...props}/>
         // } else {

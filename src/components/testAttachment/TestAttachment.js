@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import './TestAttachment.css'
 import TestItem from './Test_Item'
+import APIManager from '../helpers/APIManager'
 
 export default class TestAttachment extends Component {
     state = {
+        dater: [],
         avoidant: [],
         anxious: [],
         anxiousCalc: {},
@@ -18,6 +20,12 @@ export default class TestAttachment extends Component {
         values: ["anxiousValue", "avoidantValue"],
         scores: [7, 6, 5, 4, 3, 2, 1],
         responses: ["Strongly Agree", "Agree", "Somewhat Agree", "Neutral", "Somewhat Disagree", "Disagree"]
+    }
+
+    componentDidMount = () => {
+        console.log("componenet mounted")
+        APIManager.getAll('daters')
+        .then(response => this.setState({'dater': response[0]}))
     }
 
     handleSelection = (event) => {
@@ -70,7 +78,11 @@ export default class TestAttachment extends Component {
 
 
     handleSubmit = (event) => {
+        event.preventDefault()
+        
 
+        let updater = this.state.dater
+        updater[attachment_id] = 
     }
 
     render() {

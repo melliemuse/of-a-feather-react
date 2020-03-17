@@ -10,8 +10,6 @@ export default class TestItem extends Component {
                 <fieldset>
                     <div className="question">
                         <h6 className="question_title"> {this.props.id}. {this.props.high_avoidance_question || this.props.high_anxiety_question || this.props.low_avoidance_question || this.props.low_anxiety_question} </h6>
-                    
-                
                         <input
                     type="radio"
                     id={this.props.id}

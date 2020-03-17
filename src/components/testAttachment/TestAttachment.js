@@ -19,11 +19,11 @@ export default class TestAttachment extends Component {
         },
         values: ["anxiousValue", "avoidantValue"],
         scores: [7, 6, 5, 4, 3, 2, 1],
+        scores_reversed: [1, 2, 3, 4, 5, 6, 7],
         responses: ["Strongly Agree", "Agree", "Somewhat Agree", "Neutral", "Somewhat Disagree", "Disagree"]
     }
 
     componentDidMount = () => {
-        console.log("componenet mounted")
         APIManager.getAll('daters')
         .then(response => this.setState({'dater': response[0]}))
     }
@@ -77,12 +77,33 @@ export default class TestAttachment extends Component {
     }
 
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        
+    handleSubmit = () => {
+        console.log("handle submit fired")
+        const secure_id = 1
+        const anxious_id = 2
+        const avoidant_id = 3
+        const threshold = 63
+        const anxious_score = this.state.anxious
+        const avoidant_score = this.state.avoidant
+        let dater_attachment_id = null
 
-        let updater = this.state.dater
-        updater[attachment_id] = 
+        if (anxious_score < threshold && avoidant_score < threshold) {
+            dater_attachment_id = secure_id
+        } else if (anxious_score > avoidant_score && anxious_score > threshold) {
+            dater_attachment_id = anxious_id
+        } else if (avoidant_score > anxious_score && avoidant_score > threshold) {
+            dater_attachment_id = avoidant_id
+        }
+
+        
+            let updater = this.state.dater
+            console.log(this.state.dater)
+            updater.attachment_style_id = dater_attachment_id
+            console.log(updater)
+    
+            APIManager.update("daters", updater)
+            .then(this.props.history.push("/"))
+        
     }
 
     render() {
@@ -116,7 +137,7 @@ export default class TestAttachment extends Component {
                         return <TestItem
                             key={i}
                             id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + i + 1}
-                            scores={this.state.scores.reverse()}
+                            scores={this.state.scores_reversed}
                             values={this.state.values[1]}
                             low_avoidance_question={low_avoidance_question}
                             handleSelection={this.handleSelection}
@@ -126,7 +147,7 @@ export default class TestAttachment extends Component {
                         return <TestItem
                             key={i}
                             id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + this.state.questions.low_avoidance_questions.length + i + 1}
-                            scores={this.state.scores.reverse()}
+                            scores={this.state.scores_reversed}
                             values={this.state.values[0]}
                             low_anxiety_question={low_anxiety_question}
                             handleSelection={this.handleSelection}
@@ -135,7 +156,7 @@ export default class TestAttachment extends Component {
 
 
                 </form>
-                <button>See Your Results</button>
+                <button onClick={() => this.handleSubmit()}>See Your Results</button>
             </main>
         )
     }

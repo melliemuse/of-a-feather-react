@@ -16,24 +16,18 @@ export default class Home extends Component {
     componentDidMount() {
         // Add exclude to exclude rejected and matched matches
         APIManager.getAll("daters")
-            .then(response => {
-                const attachment_style = response[0].attachment_style_id
-                if (attachment_style !== 1) {
-                    this.setState({ filter_id: 1 })
-                }
-                else {
-                    this.setState({ filter_id: `1&2&3` })
-                }
+        .then((response) => {
+            console.log(response)
+            console.log(response[0])
+            console.log(response[0].attachment_style_id)
+            const attachment_style = response[0].attachment_style_id
+            if (this.state.filter_id !== null) {
+                APIManager.getAll(`daters?attachment_style_id=${attachment_style}`)
+                .then(response => this.setState({ matches: response }))
+            }
                 this.setState({
-                    attachment_style: attachment_style,
-                    dater_id: response[0].id
-                })
-            })
-            .then(() => {
-                if (this.state.filter_id !== null) {
-                    APIManager.getAll(`daters?attachment_style_id=${this.state.filter_id}`)
-                        .then(response => this.setState({ matches: response }))
-                }
+                    // attachment_style: attachment_style,
+                    dater_id: response[0].id })
             })
             .then(() => {
                 APIManager.getAll("matchstatuses")
@@ -73,12 +67,13 @@ export default class Home extends Component {
 
     }
 
-    handlePass = (matched_with_id) => {
+    handlePass = (matched_with_id, iterator) => {
         //create object for match table 
+        const rejected = this.state.match_status[2].id
         let match = {
             dater_id: this.state.dater_id,
             matched_with_id: matched_with_id,
-            match_status_id: this.state.match_status[2].id
+            match_status_id: rejected
         }
         console.log(match)
         // check if match exists for both users. 
@@ -89,7 +84,7 @@ export default class Home extends Component {
                 console.log("response",response)
                 //    if so, change status to matched.
                 if (response[0]) {
-                    match.id = response[0].id
+                    match.id = response[iterator].id
                     console.log("match exists", match)
                     APIManager.update(`matches`, match)
                     // .then(response => console.log(response))
@@ -113,10 +108,11 @@ export default class Home extends Component {
                     <Filter />
                 </div>
                 <div>
-                    {this.state.matches.map(match =>
+                    {this.state.matches.map((match, i) =>
                         <MainMatches
                             handleMatch={this.handleMatch}
                             handlePass={this.handlePass}
+                            iterator={i}
                             match={match}
                             key={match.id}
                         />

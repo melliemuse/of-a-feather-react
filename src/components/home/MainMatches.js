@@ -27,7 +27,7 @@ export default class MainMatches extends Component {
             >Match</button>
             <button 
             // id={this.props.match.id}
-            onClick={() =>this.props.handlePass(this.props.match.id)}
+            onClick={() => this.props.handlePass(this.props.match.id, this.props.iterator)}
             >Pass</button>
             </>
         )

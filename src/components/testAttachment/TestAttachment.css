@@ -2,6 +2,10 @@
     margin: 0 auto;
     width: 75%;
 }
+.main {
+    margin: 5em auto;
+    text-align: center;
+}
 .question {
     display: flex;
     justify-content: space-evenly;

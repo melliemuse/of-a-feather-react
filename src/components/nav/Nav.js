@@ -9,7 +9,7 @@ export default class Nav extends Component {
             <>
             <ul className="nav">
                 <Link to='/'><li>Home</li></Link>
-                <Link to='/'><li>My Matches</li></Link>
+                <Link to='/mymatches'><li>My Matches</li></Link>
                 <Link to='/'><li>Messages</li></Link>
                 <Link to='/'><li>My Profile</li></Link>
                 <Link to='/'><li>Register</li></Link>

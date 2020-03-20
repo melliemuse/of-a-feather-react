@@ -36,6 +36,16 @@ export default {
             body: JSON.stringify(itemToUpdate)
         }).then(response => response.json)
     },
+    patch(endpoint, updateObj) {
+        return fetch(`${Settings.remote_URL}/${endpoint}/${updateObj.id}`, {
+            method: "PATCH",
+                headers: {
+                    'Content-Type': "application/json",
+                    'Authorization': `Token ${sessionStorage.getItem(Settings.token_name)}`,
+                },
+                body: JSON.stringify(updateObj)
+            }).then(response => response.json)
+        },
     delete(endpoint, id) {
         return fetch(`${Settings.remote_URL}/${endpoint}/${id}`, {
             method: "DELETE"

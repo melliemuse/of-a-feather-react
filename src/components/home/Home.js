@@ -102,7 +102,7 @@ export default class Home extends Component {
     render() {
         console.log(this.state.matches)
         return (
-            <div className="center_noflex">
+            <div className="main">
                 <h1>Matches</h1>
                 <div>
                     <Filter />

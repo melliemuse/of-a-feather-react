@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { isAuthenticated } from './helpers/simpleAuth'
+import { Route, Redirect } from 'react-router-dom'
 import Home from './home/Home'
 import TestAttachment from './testAttachment/TestAttachment'
 import Register from './auth/Register'
 import MyMatchList from './MyMatches/MyMatchList'
+import Login from './auth/Login'
 
 
 
@@ -12,32 +14,31 @@ export default class ApplicationViews extends Component {
         return (
     <>
     <Route exact path="/" render={props => {  
-        // if (this.props.isAuthenticated()) {
+        if (isAuthenticated()) {
             return <Home {...props}/>
-        // } else {
-        //     return <Redirect to="/login" />
-        // }
+        } else {
+            return <Redirect to="/login" />
+        }
     }}/>
     <Route path="/assessment/" render={props => {  
-        // if (this.props.isAuthenticated()) {
+        if (isAuthenticated()) {
             return <TestAttachment {...props}/>
-        // } else {
-        //     return <Redirect to="/login" />
-        // }
+        } else {
+            return <Redirect to="/login" />
+        }
     }}/>
     <Route path="/register" render={props => {  
-        // if (this.props.isAuthenticated()) {
             return <Register {...props}/>
-        // } else {
-        //     return <Redirect to="/login" />
-        // }
-    }}/>
+        }}/>
+    <Route path="/login" render={props => {
+               return <Login {...props} />
+           }}/>
     <Route exact path="/mymatches" render={props => {  
-        // if (this.props.isAuthenticated()) {
+        if (isAuthenticated()) {
             return <MyMatchList {...props}/>
-        // } else {
-        //     return <Redirect to="/login" />
-        // }
+        } else {
+            return <Redirect to="/login" />
+        }
     }}/>
     </>
         )

@@ -21,7 +21,7 @@ export default class MyMatchItem extends Component {
                 <h4>Bio</h4>
                 <p>{this.props.match.bio}</p>
                 <button>Message</button>
-                <button onClick={() => this.props.handleUnmatch(this.props.match)}>Unmatch</button>
+                <button onClick={() => this.props.handleUnmatch(this.props.match, this.props.id, this.props.i)}>Unmatch</button>
             </div>
         )
 

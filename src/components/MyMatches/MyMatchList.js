@@ -18,44 +18,56 @@ export default class MyMatchList extends Component {
                         console.log(response)
                         console.log(currentDater)
                         let matches = []
+                        let match_ids = []
+                        let matchObj = {}
                         response.map(match => {
                             console.log(match)
                             if (this.state.currentUser) {
                                 if (match.dater_id !== this.state.currentUser.id) {
                                     matches.push(match.dater)
+                                    match_ids.push(match.id)
                                 } else if (match.matched_with_id !== this.state.currentUser.id) {
                                     matches.push(match.matched_with)
+                                    match_ids.push(match.id)
                                 }
-                                return matches
+                                matchObj.match_ids = match_ids
+                                matchObj.matches = matches
+                                return matchObj
                             }
                         })
-                        this.setState({ matches: matches })
+                        this.setState({ matches: matchObj })
                     })
-            } 
+            }
             )
 
     }
 
-    handleUnmatch = (match) => {
-        let itemToUpdate = {
-            id: match.id,
-            match_status_id: 3,
-            dater_id: match.dater_id,
-            matched_with_id: match.matched_with_id
-        }
+    handleUnmatch = (match, id, i) => {
+        console.log(i)
+        console.log(this.state.matches.match_ids[i])
+        if (this.state.matches.match_ids[i]) {
+            console.log(this.state.matches.match_ids[i])
+            let itemToUpdate = {
+                id: this.state.matches.match_ids[i],
+                match_status_id: 3,
+            //     dater_id: match.dater_id,
+            //     matched_with_id: match.matched_with_id
+            }
+            APIManager.patch(`matches`, itemToUpdate)
+                .then(() => {
+                    APIManager.getAll(`matches?match_status_id=2`)
+                        .then(response => this.setState({ matches: response }))
+                })
 
-        APIManager.update(`matches`, itemToUpdate)
-            .then(() => {
-                APIManager.getAll(`matches?match_status_id=2`)
-                    .then(response => this.setState({ matches: response }))
-            })
+        }
     }
 
     render() {
+        console.log(this.state)
         return (
             <>
-                {this.state.matches.map((match, i) => {
-                    return <MyMatchItem key={i} match={match} handleUnmatch={this.handleUnmatch} />
+                {this.state.matches.matches && this.state.matches.matches.map((match, i) => {
+                    return <MyMatchItem i={i} id={match.url.split("/")[match.url.split("/").length - 1]} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} />
                 })
                 }
             </>

@@ -7,26 +7,21 @@ import Filter from './Filter'
 export default class Home extends Component {
     state = {
         attachment_style: null,
-        filter_id: 0,
         dater_id: null,
         matches: [],
         match_status: []
     }
 
     componentDidMount() {
-        // Add exclude to exclude rejected and matched matches
+        // Query API to return current logged in user's dater information
         APIManager.getAll("daters")
         .then((response) => {
-            console.log(response)
-            console.log(response[0])
-            console.log(response[0].attachment_style_id)
             const attachment_style = response[0].attachment_style_id
-            if (this.state.filter_id !== null) {
+            //  Query API by logged in user's attachment style
                 APIManager.getAll(`daters?attachment_style_id=${attachment_style}`)
                 .then(response => this.setState({ matches: response }))
-            }
                 this.setState({
-                    // attachment_style: attachment_style,
+                    attachment_style: attachment_style,
                     dater_id: response[0].id })
             })
             .then(() => {
@@ -35,11 +30,22 @@ export default class Home extends Component {
             })
     }
 
+    getdaters = () => {
+        //  Query API by logged in user's attachment style
+        APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}`)
+        .then(response => {
+            console.log(response, "getdaters() ran")
+            this.setState({ matches: response })
+        } 
+            )
+    }
+
     handleMatch = (matched_with_id) => {
         
         //    check if match exists for both users. 
-        APIManager.getAll(`matches?dater_id=${this.state.dater_id}&matched_with_id=${matched_with_id}`)
+        APIManager.getAll(`matches?matched_with_id=${matched_with_id}`)
             .then(response => {
+                // debugger
                 console.log("response",response)
                 //create object for match table 
                 let match = {
@@ -53,14 +59,18 @@ export default class Home extends Component {
                     match.id = response[0].id
                     console.log("match exists", match)
                     APIManager.update(`matches`, match)
-                    // .then(response => console.log(response))
+                    .then(() => {
+                        this.getdaters()
+                    })
                 }
                 //    if not, create it and change status to pending. 
                 else {
                     match.match_status_id = this.state.match_status[0].id
                     console.log("match doesn't exist", match)
                     APIManager.createNew(`matches`, match)
-                    // .then(response => console.log(response))
+                    .then(() => {
+                        this.getdaters()
+                    })
                 }
             })
 
@@ -79,7 +89,7 @@ export default class Home extends Component {
         // check if match exists for both users. 
         // http://localhost:8000/matches?dater_id=${dater_id}&matched_with_id=${matched_with_id}
         //    check if match exists for both users. 
-        APIManager.getAll(`matches?dater_id=${this.state.dater_id}&matched_with_id=${matched_with_id}`)
+        APIManager.getAll(`matches?matched_with_id=${matched_with_id}`)
             .then(response => {
                 console.log("response",response)
                 //    if so, change status to matched.
@@ -87,20 +97,24 @@ export default class Home extends Component {
                     match.id = response[iterator].id
                     console.log("match exists", match)
                     APIManager.update(`matches`, match)
-                    // .then(response => console.log(response))
+                    .then(() => {
+                        this.getdaters()
+                    })
                 }
                 // if not, create it and change status to rejected. if so, change status to rejected.  
                 else {
                     console.log("match doesn't exist", match)
                     APIManager.createNew(`matches`, match)
-                    // .then(response => console.log(response))
+                    .then(() => {
+                        this.getdaters()
+                    })
                 }
             })
 
     }
 
     render() {
-        console.log(this.state.matches)
+        // console.log(this.state.matches)
         return (
             <div className="main">
                 <h1>Matches</h1>

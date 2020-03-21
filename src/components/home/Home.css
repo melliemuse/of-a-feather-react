@@ -3,3 +3,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+.profile_pic {
+    width: 250px;
+    height: auto;
+}

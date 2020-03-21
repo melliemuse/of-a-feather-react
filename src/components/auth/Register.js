@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 import { register } from "../helpers/simpleAuth"
+import Mike from "../assets/default_avatar.png"
+import './Register.css'
+
 
 class Register extends Component {
 
@@ -25,6 +28,19 @@ class Register extends Component {
         age_range2: null,
         tagline: "",
         been_reported: 0
+    }
+
+    uploadWidget = () => {
+        window.cloudinary.openUploadWidget({ cloud_name: "dwjgfd51f", upload_preset: "xq4hmw9d", tags: ['dater_avatar'] },
+            (error, result) => {
+                if (result) {
+                    console.log("result", result);
+                    console.log("https://res.cloudinary.com/dwjgfd51f/image/upload/v1584759759/" + result[0].public_id)
+                    this.setState({
+                        profile_pic: `https://res.cloudinary.com/dwjgfd51f/image/upload/v1584759759/${result[0].public_id}`
+                    })
+                }
+            })
     }
 
     handleInputChange = (evt) => {
@@ -65,10 +81,15 @@ class Register extends Component {
     }
 
     render() {
+        console.log(this.state.profile_pic)
         return (
             <main style={{ textAlign: "center" }}>
+                <h1 className="h3 mb-3 font-weight-normal">Register and Create Your Profile!</h1>
+                <button onClick={this.uploadWidget}>Upload Profile Picture</button>
+                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300"></img>}
+                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+
                 <form className="form--login" onSubmit={this.handleRegister}>
-                    <h1 className="h3 mb-3 font-weight-normal">Register and Create Your Profile!</h1>
                     <fieldset>
                         <label htmlFor="userName"> Username </label>
                         <input onChange={(evt) => this.handleInputChange(evt)}
@@ -209,15 +230,8 @@ class Register extends Component {
                             className="form-control"
                             required />
                     </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputProfilePic"> Profile Pic </label>
-                        <input onChange={this.handleInputChange}
-                            id="profile_pic"
-                            type="text"
-                            name="profile_pic"
-                            className="form-control"
-                            required />
-                    </fieldset>
+
+
                     <fieldset>
                         <label htmlFor="inputAge"> Age </label>
                         <input onChange={this.handleInputChange}
@@ -284,6 +298,7 @@ class Register extends Component {
                             required />
                     </fieldset>
                     <fieldset>
+
                         <button type="submit">
                             Register
             </button>

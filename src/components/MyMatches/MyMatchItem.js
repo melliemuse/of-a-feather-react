@@ -4,7 +4,7 @@ export default class MyMatchItem extends Component {
     render() {
         return (
             <div className="main flex">
-                <img src={this.props.match.profile_pic}></img>
+                <img className="profile_pic" src={this.props.match.profile_pic}></img>
                 <h3>{this.props.match.user.first_name}</h3>
                 <h4>Age</h4>
                 <p>{this.props.match.age}</p>

@@ -6,7 +6,7 @@ export default class MainMatches extends Component {
         return (
             <>
             <img src={this.props.match.profile_pic}></img>
-            <h3>{this.props.match.user.username}</h3>
+            <h3>{this.props.match.user.first_name}</h3>
             <h4>Age</h4>
             <p>{this.props.match.age}</p>
             {this.props.match.smoker && <p>Smoker</p>}

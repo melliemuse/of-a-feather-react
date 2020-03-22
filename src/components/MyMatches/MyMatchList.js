@@ -14,14 +14,10 @@ export default class MyMatchList extends Component {
                 this.setState({ currentUser: currentDater[0] })
                 APIManager.getAll(`matches?match_status_id=2`)
                     .then(response => {
-                        // this.setState({ matches: response })
-                        console.log(response)
-                        console.log(currentDater)
                         let matches = []
                         let match_ids = []
                         let matchObj = {}
                         response.map(match => {
-                            console.log(match)
                             if (this.state.currentUser) {
                                 if (match.dater_id !== this.state.currentUser.id) {
                                     matches.push(match.dater)
@@ -42,32 +38,31 @@ export default class MyMatchList extends Component {
 
     }
 
-    handleUnmatch = (match, id, i) => {
+    handleUnmatch = (i) => {
         console.log(i)
         console.log(this.state.matches.match_ids[i])
         if (this.state.matches.match_ids[i]) {
             console.log(this.state.matches.match_ids[i])
             let itemToUpdate = {
                 id: this.state.matches.match_ids[i],
-                match_status_id: 3,
-            //     dater_id: match.dater_id,
-            //     matched_with_id: match.matched_with_id
+                match_status_id: 3
             }
             APIManager.patch(`matches`, itemToUpdate)
                 .then(() => {
                     APIManager.getAll(`matches?match_status_id=2`)
                         .then(response => this.setState({ matches: response }))
                 })
-
         }
     }
+
 
     render() {
         console.log(this.state)
         return (
             <>
+                
                 {this.state.matches.matches && this.state.matches.matches.map((match, i) => {
-                    return <MyMatchItem i={i} id={match.url.split("/")[match.url.split("/").length - 1]} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} />
+                    return <MyMatchItem i={i} match_id={this.state.matches.match_ids[i]} id={parseInt(match.url.split("/")[match.url.split("/").length - 1])} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} />
                 })
                 }
             </>

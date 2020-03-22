@@ -6,6 +6,9 @@ import TestAttachment from './testAttachment/TestAttachment'
 import Register from './auth/Register'
 import MyMatchList from './MyMatches/MyMatchList'
 import Login from './auth/Login'
+import MessageHistorySingleUser from './Messaging/MessageHistorySingleUser'
+import MessageHistoryEveryone from './Messaging/MessageHistoryEveryone'
+import NewMessage from './Messaging/NewMessage'
 
 
 
@@ -40,6 +43,28 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
         }
     }}/>
+    <Route exact path="/messages" render={props => {  
+        if (isAuthenticated()) {
+            return <MessageHistoryEveryone {...props}/>
+        } else {
+            return <Redirect to="/login" />
+        }
+    }}/>
+    {/* path="/products/:productId(\d+)" */}
+    <Route exact path="/messages/:id(\d+)" render={props => {  
+        if (isAuthenticated()) {
+            return <MessageHistorySingleUser {...props}/>
+        } else {
+            return <Redirect to="/login" />
+        }
+    }}/>
+    {/* <Route exact path="/newmessage/:match_id(\d+)" render={props => {  
+        if (isAuthenticated()) {
+            return <NewMessage {...props}/>
+        } else {
+            return <Redirect to="/login" />
+        }
+    }}/> */}
     </>
         )
     }

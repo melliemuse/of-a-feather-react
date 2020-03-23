@@ -19,12 +19,24 @@ export default class MessageHistorySingleUser extends Component {
         .then(response => this.setState({messages: response})))
     }
 
+    deleteMessage = (id) => {
+        APIManager.delete('messages', id)
+        .then(() => APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
+        .then(response => this.setState({messages: response})))
+    }
+
+    editMessage = (message) => {
+        APIManager.update('messages', message)
+        .then(() => APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
+        .then(response => this.setState({messages: response})))
+    }
+
     render() {
         return (
             <>
             
             {this.state.messages.map(message => {
-                return <MessageEach message={message} key={message.id} {...this.props}/>
+                return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props}/>
             })}
             <NewMessage message={this.state.message} postMessage={this.postMessage} {...this.props}/>
             </>

@@ -19,6 +19,8 @@ export default function MessageEach(props) {
         <div> 
             <img src={display.profile_pic} alt="avatar"className="profile_pic" />
             <p>{props.message.message_body}</p>
+            <button>Edit Message</button>
+            <button onClick={() => props.deleteMessage(props.message.id)}>Delete Message</button>
         </div>
     )
 }

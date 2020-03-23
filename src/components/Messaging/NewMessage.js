@@ -32,7 +32,7 @@ export default class NewMessage extends Component {
         return (
             <>
             <form>
-                <input id="message_body" type="textarea" autoFocus onChange={this.handleFieldChange}/>
+                <textarea id="message_body" autoFocus onChange={this.handleFieldChange}/>
             </form>
             <button onClick={this.handleSubmit}>Send message</button>
             </>

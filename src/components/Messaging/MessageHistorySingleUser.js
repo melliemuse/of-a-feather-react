@@ -25,13 +25,17 @@ export default class MessageHistorySingleUser extends Component {
         .then(response => this.setState({messages: response})))
     }
 
-    editMessage = (message) => {
-        APIManager.update('messages', message)
+    editMessage = (message, id) => {
+        APIManager.patch2('messages', message, id)
         .then(() => APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
-        .then(response => this.setState({messages: response})))
+        .then(response => {
+            console.log(response)
+            this.setState({messages: response})
+        }))
     }
 
     render() {
+        console.log(this.state.messages)
         return (
             <>
             

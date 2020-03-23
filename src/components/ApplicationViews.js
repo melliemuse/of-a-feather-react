@@ -58,13 +58,13 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
         }
     }}/>
-    {/* <Route exact path="/newmessage/:match_id(\d+)" render={props => {  
+    <Route exact path="/newmessage/:match_id(\d+)" render={props => {  
         if (isAuthenticated()) {
             return <NewMessage {...props}/>
         } else {
             return <Redirect to="/login" />
         }
-    }}/> */}
+    }}/>
     </>
         )
     }

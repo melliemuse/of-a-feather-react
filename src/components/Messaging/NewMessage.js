@@ -6,22 +6,25 @@ export default class NewMessage extends Component {
         message_body: ''
     }
 
-    handleFieldChange = () => {
-
+    handleFieldChange = (event) => {
+        event.preventDefault()
+        this.setState({message_body: event.target.value})
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-
+    handleSubmit = () => {
+        console.log(this.props.match.params.id)
         if (this.state.message_body) {
             let message = {
                 message_body: this.state.message_body,
-                match_id: this.props.match.params.match_id
+                match_id: parseInt(this.props.match.params.id)
             }
             console.log(message)
-            // APIManager.createNew('messages?match_id=', message)
-            // .then(() => this.props.history.push(`messages/${match_id}`))
+            this.props.postMessage(message)
         }
+    }
+    
+
+    clearField = (event) => {
 
     }
 
@@ -29,10 +32,9 @@ export default class NewMessage extends Component {
         return (
             <>
             <form>
-                <label htmlFor="message_body">Say something nice</label>
-                <input id="message_body" onChange={this.handleFieldChange}>Message</input>
+                <textarea id="message_body" placeholder="Type your message" autoFocus onChange={this.handleFieldChange}/>
             </form>
-            <button onClick={this.handleSubmit}></button>
+            <button onClick={this.handleSubmit}>Send message</button>
             </>
         )
     }

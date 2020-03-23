@@ -17,6 +17,7 @@ export default class MessageHistorySingleUser extends Component {
         APIManager.createNew('messages', message)
             .then(() => APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
         .then(response => this.setState({messages: response})))
+        
     }
 
     deleteMessage = (id) => {
@@ -29,7 +30,6 @@ export default class MessageHistorySingleUser extends Component {
         APIManager.patch2('messages', message, id)
         .then(() => APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
         .then(response => {
-            console.log(response)
             this.setState({messages: response})
         }))
     }

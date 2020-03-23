@@ -17,10 +17,12 @@ export default class Home extends Component {
         APIManager.getAll("daters")
         .then((response) => {
             const attachment_style = response[0].attachment_style_id
+            const age_range = response[0].age_range
             //  Query API by logged in user's attachment style
-                APIManager.getAll(`daters?attachment_style_id=${attachment_style}`)
+                APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}`)
                 .then(response => this.setState({ matches: response }))
                 this.setState({
+                    age_range: age_range,
                     attachment_style: attachment_style,
                     dater_id: response[0].id })
             })
@@ -32,7 +34,7 @@ export default class Home extends Component {
 
     getdaters = () => {
         //  Query API by logged in user's attachment style
-        APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}`)
+        APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}&age_range=${this.state.age_range}`)
         .then(response => {
             console.log(response, "getdaters() ran")
             this.setState({ matches: response })

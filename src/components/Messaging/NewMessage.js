@@ -19,20 +19,21 @@ export default class NewMessage extends Component {
                 match_id: parseInt(this.props.match.params.id)
             }
             console.log(message)
+            this.clearField()
             this.props.postMessage(message)
         }
     }
     
 
     clearField = (event) => {
-
+        this.setState({message_body: ''})
     }
 
     render() {
         return (
             <>
             <form>
-                <textarea id="message_body" placeholder="Type your message" autoFocus onChange={this.handleFieldChange}/>
+                <textarea id="message_body" placeholder="Type your message" value={this.state.message_body} autoFocus onChange={this.handleFieldChange}/>
             </form>
             <button onClick={this.handleSubmit}>Send message</button>
             </>

@@ -19,6 +19,7 @@ export default class Home extends Component {
             const attachment_style = response[0].attachment_style_id
             const age_range = response[0].age_range
             //  Query API by logged in user's attachment style
+                console.log(age_range)
                 APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}`)
                 .then(response => this.setState({ matches: response }))
                 this.setState({
@@ -34,6 +35,7 @@ export default class Home extends Component {
 
     getdaters = () => {
         //  Query API by logged in user's attachment style
+        console.log(this.state.age_range)
         APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}&age_range=${this.state.age_range}`)
         .then(response => {
             console.log(response, "getdaters() ran")

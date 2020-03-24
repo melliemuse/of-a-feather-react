@@ -67,7 +67,7 @@ class Register extends Component {
             "interests": this.state.interests,
             "profile_pic": this.state.profile_pic,
             "age": parseInt(this.state.age),
-            "age_range": `${this.state.age_range1} - ${this.state.age_range2}`,
+            "age_range": `${this.state.age_range1}-${this.state.age_range2}`,
             "tagline": this.state.tagline,
             "been_reported": this.state.been_reported,
             "email": this.state.email,

@@ -1,79 +1,50 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import './TestAttachment.css'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
-export default class TestItem extends Component {
 
+export default function TestItem(props) {
+    const [value, setValue] = React.useState({});
+    // debugger
+    // const id = props.id
+    const handleChange = (event) => {
+        setValue(event.target.value)
+        event.persist()
+        let numvalue = event.target.value
+        let value = props.values
+        props.handleSelection(event, value, numvalue);
+    };
 
-    render() {
-        return (
-            <>
-                <fieldset>
-                    <div className="question">
-                        <h6 className="question_title"> {this.props.id}. {this.props.high_avoidance_question || this.props.high_anxiety_question || this.props.low_avoidance_question || this.props.low_anxiety_question} </h6>
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[6] || this.props.scores_reversed[6])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}
-                            required
-                            >
-                        </input>
-                        <label>Strongly Disagree</label>
+    if (props.scoreType == "normal") {
 
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[5] || this.props.scores_reversed[5])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Disagree</label>
+    }
+    else {
 
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[4] || this.props.scores_reversed[4])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Somewhat Disagree</label>
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[3] || this.props.scores_reversed[3])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Neutral</label>
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[2] || this.props.scores_reversed[2])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Somewhat Agree</label>
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[1] || this.props.scores_reversed[1])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Agree</label>
-                        <input
-                            type="radio"
-                            id={this.props.id}
-                            value={parseInt(this.props.scores[0] || this.props.scores_reversed[0])}
-                            name={this.props.values}
-                            onChange={this.props.handleSelection}>
-                        </input>
-                        <label>Strongly Agree</label>
-                    </div>
-                </fieldset>
-            </>
-        )
     }
 
+
+    return (
+        <>
+                <div className="question">
+                    <h6 className="question_title"> {props.id}. {props.high_avoidance_question || props.high_anxiety_question || props.low_avoidance_question || props.low_anxiety_question} </h6>
+                <FormControl component="fieldset">
+                <FormLabel component="legend">Choose Your Answer</FormLabel>
+                <RadioGroup aria-label="attachment" name={String(props.id)} value={value} onChange={handleChange} id={props.id}>
+                    <FormControlLabel value={String(props.scores[6])} control={<Radio />} label="Strongly Disagree" />
+                    <FormControlLabel value={String(props.scores[5])} control={<Radio />} label="Disagree" />
+                    <FormControlLabel value={String(props.scores[4])} control={<Radio />} label="Somewhat Disagree" />
+                    <FormControlLabel value={String(props.scores[3])} control={<Radio />} label="Neutral" />
+                    <FormControlLabel value={String(props.scores[2])} control={<Radio />} label="Somewhat Agree" />
+                    <FormControlLabel value={String(props.scores[1])} control={<Radio />} label="Agree" />
+                    <FormControlLabel value={String(props.scores[0])} control={<Radio />} label="Strongly Agree" />
+                </RadioGroup>
+                </FormControl>
+                </div>
+        </>
+    )
 }
+

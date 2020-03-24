@@ -18,11 +18,13 @@ export default class Home extends Component {
         .then((response) => {
             const attachment_style = response[0].attachment_style_id
             const age_range = response[0].age_range
+            let gender_preference = response[0].gender_preference
             //  Query API by logged in user's attachment style
-                console.log(age_range)
-                APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}`)
+                console.log(gender_preference)
+                APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}&gender_preference=${gender_preference}`)
                 .then(response => this.setState({ matches: response }))
                 this.setState({
+                    gender_preference: gender_preference,
                     age_range: age_range,
                     attachment_style: attachment_style,
                     dater_id: response[0].id })
@@ -36,7 +38,7 @@ export default class Home extends Component {
     getdaters = () => {
         //  Query API by logged in user's attachment style
         console.log(this.state.age_range)
-        APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}&age_range=${this.state.age_range}`)
+        APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}&age_range=${this.state.age_range}&gender_preference=${this.state.gender_preference}`)
         .then(response => {
             console.log(response, "getdaters() ran")
             this.setState({ matches: response })

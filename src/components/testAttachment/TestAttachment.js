@@ -28,19 +28,19 @@ export default class TestAttachment extends Component {
         .then(response => this.setState({'dater': response[0]}))
     }
 
-    handleSelection = (event) => {
+    handleSelection = (event, value, numvalue) => {
 
         let anxiousCalc = {}
         let avoidantCalc = {}
         let avoidantscore = null
         let anxiousscore = null
-        let score = event.target.value;
-
+        let score = numvalue;
+        let values = value.split('-')[0]
         //  If question carries an avoidant value, check to see if question has already been answered
         //  If it has, reassign value in calculation object
-
-        if (event.target.name === 'avoidantValue' && !this.state.avoidantCalc[event.target.id]) {
-            avoidantCalc[event.target.id] = parseInt(score)
+        
+        if (values === 'avoidantValue' && !this.state.avoidantCalc[event.currentTarget.name]) {
+            avoidantCalc[event.currentTarget.name] = parseInt(score)
             const combo = Object.assign(this.state.avoidantCalc, avoidantCalc)
             this.setState({
                 avoidantCalc: combo
@@ -57,8 +57,8 @@ export default class TestAttachment extends Component {
             }
             
         }
-        if (event.target.name === 'anxiousValue' && !this.state.anxiousCalc[event.target.id]) {
-            anxiousCalc[event.target.id] = parseInt(score)
+        if (values === 'anxiousValue' && !this.state.anxiousCalc[event.currentTarget.name]) {
+            anxiousCalc[event.currentTarget.name] = parseInt(score)
             const combo = Object.assign(this.state.anxiousCalc, anxiousCalc)
             this.setState({
                 anxiousCalc: combo
@@ -110,11 +110,23 @@ export default class TestAttachment extends Component {
     render() {
         return (
             <main className="center_noflex">
-                <h1>Determine Your Attachment Style</h1>
+                <h1>What is My Attachment Style?</h1>
                 <h5>Your matches will be better suited to you if you answer honestly- think of your <em>most common</em> relationship dynamics</h5>
                 <form className="center">
 
                     {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
+                        return <TestItem
+                            key={i}
+                            id={i + 1}
+                            scoreType={"normal"}
+                            scores={this.state.scores}
+                            values={this.state.values[0]+"-"+i+1}
+                            high_anxiety_question={high_anxiety_question}
+                            handleSelection={this.handleSelection}
+                            {...this.props}
+                        />
+                    })}
+                    {/* {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
                         return <TestItem
                             key={i}
                             id={i + 1}
@@ -123,13 +135,13 @@ export default class TestAttachment extends Component {
                             high_anxiety_question={high_anxiety_question}
                             handleSelection={this.handleSelection}
                         />
-                    })}
+                    })} */}
                     {this.state.questions.high_avoidance_questions.map((high_avoidance_question, i) => {
                         return <TestItem
                             key={i}
                             id={this.state.questions.high_anxiety_questions.length + i + 1}
                             scores={this.state.scores}
-                            values={this.state.values[1]}
+                            values={this.state.values[1]+"-"+this.state.questions.high_anxiety_questions.length+i+1}
                             high_avoidance_question={high_avoidance_question}
                             handleSelection={this.handleSelection}
                         />
@@ -139,7 +151,7 @@ export default class TestAttachment extends Component {
                             key={i}
                             id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + i + 1}
                             scores={this.state.scores_reversed}
-                            values={this.state.values[1]}
+                            values={this.state.values[1]+"-"+this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length +i+1}
                             low_avoidance_question={low_avoidance_question}
                             handleSelection={this.handleSelection}
                         />
@@ -149,7 +161,7 @@ export default class TestAttachment extends Component {
                             key={i}
                             id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + this.state.questions.low_avoidance_questions.length + i + 1}
                             scores={this.state.scores_reversed}
-                            values={this.state.values[0]}
+                            values={this.state.values[0]+"-"+i+1}
                             low_anxiety_question={low_anxiety_question}
                             handleSelection={this.handleSelection}
                         />

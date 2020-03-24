@@ -7,9 +7,11 @@
     text-align: center;
 }
 .question {
-    display: flex;
+    margin: 10px;
+    /* display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-wrap: wrap; */
 }
 fieldset {
     margin: 5px;
@@ -21,4 +23,5 @@ label {
 .question_title {
     margin: 0 auto 20px;
     width: 900px;
+    font-size: 20px;
 }

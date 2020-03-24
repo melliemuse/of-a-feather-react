@@ -15,10 +15,6 @@ export default function MessageEach(props) {
     }
 
     const [showText, setShowText] = useState(false);
-
-    // const setToggle = () => {
-    //     setShowText(!showText)
-    // }
     
 
     return (

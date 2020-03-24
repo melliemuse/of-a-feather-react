@@ -9,7 +9,8 @@ import Login from './auth/Login'
 import MessageHistorySingleUser from './Messaging/MessageHistorySingleUser'
 import MessageHistoryEveryone from './Messaging/MessageHistoryEveryone'
 import NewMessage from './Messaging/NewMessage'
-
+import UserProfile from './user_profile/UserProfile'
+import EditUserProfile from './user_profile/EditUserProfile'
 
 
 export default class ApplicationViews extends Component {
@@ -61,6 +62,20 @@ export default class ApplicationViews extends Component {
     <Route exact path="/newmessage/:match_id(\d+)" render={props => {  
         if (isAuthenticated()) {
             return <NewMessage {...props}/>
+        } else {
+            return <Redirect to="/login" />
+        }
+    }}/>
+    <Route exact path="/userprofile/" render={props => {  
+        if (isAuthenticated()) {
+            return <UserProfile {...props}/>
+        } else {
+            return <Redirect to="/login" />
+        }
+    }}/>
+    <Route exact path="/editprofile/" render={props => {  
+        if (isAuthenticated()) {
+            return <EditUserProfile {...props}/>
         } else {
             return <Redirect to="/login" />
         }

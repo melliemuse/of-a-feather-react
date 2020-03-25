@@ -1,32 +1,107 @@
 import React from 'react'
 import EditMessage from './EditMessage'
-import {useState} from 'react'
+import { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import './Messaging.css'
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        maxWidth: 700,
+        display: 'flex',
+        justifyContent: 'center',
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+        media: {
+            height: 140,
+        },
+    },
+}));
+
+
 
 export default function MessageEach(props) {
     let display = ''
+    let pic = ''
+    let displayActive = ''
+    let activeUser = {}
+    let activePath = props.currentUser
     let path = props.message.match
-    if (path.dater.url) {
-        if (props.message.logged_in_user_id === parseInt(path.dater.url.split('/')[path.dater.url.split('/').length -1])) {
+    if (path.dater.id) {
+        if (props.message.logged_in_user_id === path.dater.id) {
             display = path.dater
         }
         else {
             display = path.matched_with
-        } 
+        }
+    if (activePath[0]) {
+        if (display.id === activePath[0].id) {
+            displayActive = true
+        }
+        else {
+            displayActive = false
+        }
+        console.log(displayActive)
+    }
+    pic = display.profile_pic
+    console.log(display.user.first_name)
+    console.log(display.profile_pic)
     }
 
+    const classes = useStyles();
     const [showText, setShowText] = useState(false);
-    
+
 
     return (
-        <div> 
-            <img src={display.profile_pic} alt="avatar"className="profile_pic" />
-            <div>   
-            <p>{!showText && props.message.message_body}</p>
-            {!showText && <button onClick={() => setShowText(!showText)}>Edit Message</button>}
-            {showText && <button onClick={() => setShowText(!showText)}>Show Message</button>}
-            {showText && <EditMessage {...props}/>}
+        <>
+            <div className={classes.root}>
+
+                <Card className={classes.root} className="message">
+                    <CardActionArea>
+                        {/* <CardMedia
+                            image={pic}
+                            title="sender"
+                            style={classes.media}
+                        /> */}
+                        <Avatar src={display.profile_pic} alt="avatar" id="avatar" />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                            {display.user.first_name}
+          </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {!showText && props.message.message_body}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      
+        {!showText && displayActive && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
+                           
+
+                    {showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Cancel</Button>}
+                            
+       
+                    {showText && <EditMessage {...props} />}
+
+                   {displayActive && <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>} 
+                    </CardActions>
+
+
+
+                    {/* <div> */}
+                    
+
+                    {/* </div> */}
+                </Card>
             </div>
-            <button onClick={() => props.deleteMessage(props.message.id)}>Delete Message</button>
-        </div>
+        </>
     )
 }

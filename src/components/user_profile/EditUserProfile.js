@@ -184,13 +184,13 @@ export default class EditUserProfile extends Component {
                             onChange={this.handleInputChange}>
                             value={this.state.gender}
 
-                            <option value="female" selected={this.state.gender == "female"}>
+                            <option value="female" selected={this.state.gender === "female"}>
                                 female
                       </option>
-                            <option value="male" selected={this.state.gender == "male"}>
+                            <option value="male" selected={this.state.gender === "male"}>
                                 male
                       </option>
-                            <option value="other" selected={this.state.gender == "other"}>
+                            <option value="other" selected={this.state.gender === "other"}>
                                 other
                       </option>
                         </select>
@@ -203,13 +203,13 @@ export default class EditUserProfile extends Component {
                             id="gender_preference"
                             onChange={this.handleInputChange}>
                             value={this.state.gender_preference}
-                            <option value="female" selected={this.state.gender_preference == "female"}>
+                            <option value="female" selected={this.state.gender_preference === "female"}>
                                 female
                       </option>
-                            <option value="male" selected={this.state.gender_preference == "male"}>
+                            <option value="male" selected={this.state.gender_preference === "male"}>
                                 male
                       </option>
-                            <option value="all" selected={this.state.gender_preference == "all"}>
+                            <option value="all" selected={this.state.gender_preference === "all"}>
                                 all
                       </option>
                         </select>
@@ -221,10 +221,10 @@ export default class EditUserProfile extends Component {
                             id="kids"
                             onChange={this.handleInputChange}>
                             value={this.state.kids}
-                            <option value={0} selected={this.state.kids == 0 || this.state.kids == false}>
+                            <option value={0} selected={this.state.kids === 0 || this.state.kids === false}>
                                 No
                       </option>
-                            <option value={1} selected={this.state.kids == 1 || this.state.kids == true}>
+                            <option value={1} selected={this.state.kids === 1 || this.state.kids === true}>
                                 Yes
                       </option>
                         </select>
@@ -236,10 +236,10 @@ export default class EditUserProfile extends Component {
                             id="smoker"
                             onChange={this.handleInputChange}>
                             value={this.state.smoker}
-                            <option value={0} selected={this.state.smoker == 0 || this.state.smoker == false}>
+                            <option value={0} selected={this.state.smoker === 0 || this.state.smoker === false}>
                                 No
                       </option>
-                            <option value={1} selected={this.state.smoker == 1 || this.state.smoker == true}>
+                            <option value={1} selected={this.state.smoker === 1 || this.state.smoker === true}>
                                 Yes
                       </option>
                         </select>
@@ -252,13 +252,13 @@ export default class EditUserProfile extends Component {
                             id="looking_for"
                             value={this.state.looking_for}
                             onChange={this.handleInputChange}>
-                            <option value="relationship" selected={this.state.looking_for == "relationship"}>
+                            <option value="relationship" selected={this.state.looking_for === "relationship"}>
                                 Relationship
                       </option>
-                            <option value="something casual" selected={this.state.looking_for == "something casual"}>
+                            <option value="something casual" selected={this.state.looking_for === "something casual"}>
                                 Something Casual
                       </option>
-                            <option value="unsure" selected={this.state.looking_for == "unsure"}>
+                            <option value="unsure" selected={this.state.looking_for === "unsure"}>
                                 Unsure
                       </option>
                         </select>

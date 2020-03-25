@@ -5,12 +5,17 @@ import NewMessage from './NewMessage'
 
 export default class MessageHistorySingleUser extends Component {
     state = {
-        messages: []
+        messages: [],
+        currentUser: []
     }
 
     componentDidMount = () => {
         APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
         .then(response => this.setState({messages: response}))
+        .then(() => {
+            APIManager.getAll('daters')
+            .then((dater) => this.setState({currentUser: dater}))
+        })
     }
 
     postMessage = (message) => {
@@ -40,7 +45,7 @@ export default class MessageHistorySingleUser extends Component {
             <>
             
             {this.state.messages.map(message => {
-                return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props}/>
+                return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props} currentUser={this.state.currentUser}/>
             })}
             <NewMessage message={this.state.message} postMessage={this.postMessage} {...this.props}/>
             </>

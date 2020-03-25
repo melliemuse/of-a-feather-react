@@ -13,32 +13,54 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        maxWidth: 700,
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: "space-between",
-        padding: '20px 40px 20px',
-        width: '300px',
-        height: '200px',
-        margin: '20px',
+    container: {
+        // display: 'flex',
+        "flex-direction": 'row, wrap',
+        // padding: '10px 40px 10px',
+        width: '350px',
+        // height: '200px',
+        margin: '30px',
         'border-radius': '10px',
-        '& > *': {
-            margin: theme.spacing(2)
+        'flex-basis': '50%',
+        content: {
+            height: 3,
+            padding: 0,
         },
-        media: {
-            height: 140,
+    },
+    root: {
+        padding: '10px 40px 10px',
+        // width: '350px',
+        // height: '200px',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        "flex-wrap": 'wrap',
+        margin: '30px',
+        'border-radius': '10px',
+        content: {
+            height: 3,
+            width: '20px',
+            padding: 0,
         },
     },
     active: {
         "background-color": "lightBlue",
-        padding: '20px 40px 20px',
-        width: '300px',
-        height: ' 200px',
-        margin: '20px',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        "flex-wrap": 'wrap',
+        alignContent: "space-between",
+        // padding: '10px 40px 30px',
+        // width: '350px',
+        // height: '200px',
+        margin: '30px',
         'border-radius': '10px',
+    },
+    buttons: {
+        padding: 0,
+        width: '30px',
     }
 }));
+
+
 
 
 
@@ -75,47 +97,38 @@ export default function MessageEach(props) {
 
     return (
         <>
-            <div className={classes.root} >
-
-                <Card className={
-                    displayActive ?
-                        classes.active :
-                        classes.root
-                } >
-                    <CardActionArea>
-                        <CardMedia
-                            image={pic}
-                            title="sender"
-                            style={classes.media}
-                        />
+            <div className={classes.container} >
+                    <Card className={
+                        displayActive ?
+                            classes.active :
+                            classes.root
+                    } >
+                                {/* <div> */}
                         <Avatar src={display.profile_pic} alt="avatar" id="avatar" />
-                        <CardContent>
+
+                        <CardContent className="classes.content">
                             <Typography gutterBottom variant="h5" component="h2">
                                 {display.user.first_name}
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
+                            <Typography variant="body1" color="textSecondary" component="p">
                                 {!showText && props.message.message_body}
                             </Typography>
                         </CardContent>
-                    </CardActionArea>
-                    <CardActions>
+                {/* </div> */}
+                <div>
+                        <CardActionArea>
+                            <CardActions className="buttons">
+                                {!showText && displayActive && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
 
-                        {!showText && displayActive && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
+                                {showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>See Message</Button>}
 
-                        {showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Cancel</Button>}
+                                {showText && <EditMessage {...props} />}
 
-                        {showText && <EditMessage {...props} />}
-
-                        {displayActive && <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>}
-                    </CardActions>
-
-
-
-                    {/* <div> */}
-
-
-                    {/* </div> */}
-                </Card>
+                                {displayActive && <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>}
+                            </CardActions>
+                        </CardActionArea>
+                </div>
+                    </Card>
             </div>
         </>
     )

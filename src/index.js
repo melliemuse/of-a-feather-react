@@ -34,7 +34,7 @@ const theme = createMuiTheme({
         //     disabled: "rgba(0, 0, 0, 0.38)",
         //     hint: "rgba(0, 0, 0, 0.38)"
         // },
-        // background: {paper: 'rgba(255, 255, 255 , 1)'}
+        background: {paper: 'rgba(255, 255, 255 , 1)'}
     },
 });
 

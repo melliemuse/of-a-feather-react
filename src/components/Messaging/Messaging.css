@@ -1,0 +1,13 @@
+#avatar {
+    height: 90px;
+    width: 90px;
+}
+#avatar .MuiAvatar-img {
+    width: 115%
+}
+.message {
+    padding: 10px 40px 10px;
+    width: 200px;
+    margin: 20px;
+    border-radius: 10px;
+}

@@ -20,7 +20,7 @@ export default class Home extends Component {
             const age_range = response[0].age_range
             let gender_preference = response[0].gender_preference
             //  Query API by logged in user's attachment style
-                console.log(gender_preference)
+                // console.log(gender_preference)
                 APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}&gender_preference=${gender_preference}`)
                 .then(response => this.setState({ matches: response }))
                 this.setState({

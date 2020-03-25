@@ -62,7 +62,7 @@ export default class MyMatchList extends Component {
             <>
                 
                 {this.state.matches.matches && this.state.matches.matches.map((match, i) => {
-                    return <MyMatchItem i={i} match_id={this.state.matches.match_ids[i]} id={parseInt(match.url.split("/")[match.url.split("/").length - 1])} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} />
+                    return <MyMatchItem i={i} match_id={this.state.matches.match_ids[i]} id={parseInt(match.url.split("/")[match.url.split("/").length - 1])} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} currentUser={this.state.currentUser}/>
                 })
                 }
             </>

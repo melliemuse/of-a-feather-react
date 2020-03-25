@@ -14,10 +14,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 445,
+        maxWidth: 700,
         display: 'flex',
+        justifyContent: 'center',
         '& > *': {
-            margin: theme.spacing(.5),
+            margin: theme.spacing(2),
         },
         media: {
             height: 140,
@@ -29,14 +30,28 @@ const useStyles = makeStyles(theme => ({
 
 export default function MessageEach(props) {
     let display = ''
+    let pic = ''
+    let displayActive = ''
+    let activeUser = {}
+    let activePath = props.currentUser
     let path = props.message.match
-    if (path.dater.url) {
-        if (props.message.logged_in_user_id === parseInt(path.dater.url.split('/')[path.dater.url.split('/').length - 1])) {
+    if (path.dater.id) {
+        if (props.message.logged_in_user_id === path.dater.id) {
             display = path.dater
         }
         else {
             display = path.matched_with
         }
+    if (activePath[0]) {
+        if (display.id === activePath[0].id) {
+            displayActive = true
+        }
+        else {
+            displayActive = false
+        }
+        console.log(displayActive)
+    }
+    pic = display.profile_pic
     console.log(display.user.first_name)
     console.log(display.profile_pic)
     }
@@ -51,11 +66,11 @@ export default function MessageEach(props) {
 
                 <Card className={classes.root} className="message">
                     <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image={display.profile_pic}
+                        {/* <CardMedia
+                            image={pic}
                             title="sender"
-                        />
+                            style={classes.media}
+                        /> */}
                         <Avatar src={display.profile_pic} alt="avatar" id="avatar" />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -68,14 +83,15 @@ export default function MessageEach(props) {
                     </CardActionArea>
                     <CardActions>
                       
-        {!showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
+        {!showText && displayActive && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
                            
 
                     {showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Cancel</Button>}
                             
        
                     {showText && <EditMessage {...props} />}
-                    <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>
+
+                   {displayActive && <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>} 
                     </CardActions>
 
 

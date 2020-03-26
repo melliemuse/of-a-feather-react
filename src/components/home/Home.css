@@ -20,3 +20,8 @@
         /* flex-wrap: 'nowrap'; */
         /* transform: 'translateZ(0)'; */
 }
+#flexScroll {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    flex-direction: column;
+}

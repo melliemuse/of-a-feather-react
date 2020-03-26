@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import APIManager from '../helpers/APIManager'
+import DoneOutlineTwoToneIcon from '@material-ui/icons/DoneOutlineTwoTone';
 
 export default function EditMessage(props) {
     const [message, setMessage] = useState([])
@@ -31,7 +32,7 @@ export default function EditMessage(props) {
     return (
         <div>
             {!showText && <textarea onChange={handleFieldChange} value={message.message_body} id='message_body' autoFocus/>}
-            {!showText && <button onClick={() => props.editMessage(message, props.message.id)}>Make Changes</button>}
+            {!showText && <DoneOutlineTwoToneIcon onClick={() => props.editMessage(message, props.message.id)}>Make Changes</DoneOutlineTwoToneIcon>}
             <div>
             {/* {!props.showText && <button onClick={props.setToggle()}>Make Changes</button>} */}
             </div>

@@ -11,6 +11,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
+import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
+import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
+
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -118,13 +122,13 @@ export default function MessageEach(props) {
                 <div>
                         <CardActionArea>
                             <CardActions className="buttons">
-                                {!showText && displayActive && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>Edit</Button>}
+                                {!showText && displayActive && <EditTwoToneIcon size="medium" color="action" onClick={() => setShowText(!showText)}></EditTwoToneIcon>}
 
-                                {showText && <Button size="medium" color="primary" onClick={() => setShowText(!showText)}>See Message</Button>}
+                                {showText && <VisibilityTwoToneIcon size="medium" color="action" onClick={() => setShowText(!showText)}>See Message</VisibilityTwoToneIcon>}
 
                                 {showText && <EditMessage {...props} />}
 
-                                {displayActive && <Button size="medium" color="primary" onClick={() => props.deleteMessage(props.message.id)}>Delete</Button>}
+                                {displayActive && <DeleteTwoToneIcon size="medium" color="action" onClick={() => props.deleteMessage(props.message.id)}></DeleteTwoToneIcon>}
                             </CardActions>
                         </CardActionArea>
                 </div>

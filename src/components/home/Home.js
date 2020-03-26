@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Home.css'
 import APIManager from '../helpers/APIManager'
 import MainMatches from './MainMatches'
-import Filter from './Filter'
+import GridList from '@material-ui/core/GridList';
 
 export default class Home extends Component {
     state = {
@@ -15,23 +15,24 @@ export default class Home extends Component {
     componentDidMount() {
         // Query API to return current logged in user's dater information
         APIManager.getAll("daters")
-        .then((response) => {
-            const attachment_style = response[0].attachment_style_id
-            const age_range = response[0].age_range
-            let gender_preference = response[0].gender_preference
-            //  Query API by logged in user's attachment style
+            .then((response) => {
+                const attachment_style = response[0].attachment_style_id
+                const age_range = response[0].age_range
+                let gender_preference = response[0].gender_preference
+                //  Query API by logged in user's attachment style
                 // console.log(gender_preference)
                 APIManager.getAll(`daters?attachment_style_id=${attachment_style}&age_range=${age_range}&gender_preference=${gender_preference}`)
-                .then(response => this.setState({ matches: response }))
+                    .then(response => this.setState({ matches: response }))
                 this.setState({
                     gender_preference: gender_preference,
                     age_range: age_range,
                     attachment_style: attachment_style,
-                    dater_id: response[0].id })
+                    dater_id: response[0].id
+                })
             })
             .then(() => {
                 APIManager.getAll("matchstatuses")
-                .then(response => this.setState({match_status: response}))
+                    .then(response => this.setState({ match_status: response }))
             })
     }
 
@@ -39,20 +40,20 @@ export default class Home extends Component {
         //  Query API by logged in user's attachment style
         console.log(this.state.age_range)
         APIManager.getAll(`daters?attachment_style_id=${this.state.attachment_style}&age_range=${this.state.age_range}&gender_preference=${this.state.gender_preference}`)
-        .then(response => {
-            console.log(response, "getdaters() ran")
-            this.setState({ matches: response })
-        } 
+            .then(response => {
+                console.log(response, "getdaters() ran")
+                this.setState({ matches: response })
+            }
             )
     }
 
     handleMatch = (matched_with_id) => {
-        
+
         //    check if match exists for both users. 
         APIManager.getAll(`matches?matched_with_id=${matched_with_id}`)
             .then(response => {
                 // debugger
-                console.log("response",response)
+                console.log("response", response)
                 //create object for match table 
                 let match = {
                     dater_id: this.state.dater_id,
@@ -65,18 +66,18 @@ export default class Home extends Component {
                     match.id = response[0].id
                     console.log("match exists", match)
                     APIManager.update(`matches`, match)
-                    .then(() => {
-                        this.getdaters()
-                    })
+                        .then(() => {
+                            this.getdaters()
+                        })
                 }
                 //    if not, create it and change status to pending. 
                 else {
                     match.match_status_id = this.state.match_status[0].id
                     console.log("match doesn't exist", match)
                     APIManager.createNew(`matches`, match)
-                    .then(() => {
-                        this.getdaters()
-                    })
+                        .then(() => {
+                            this.getdaters()
+                        })
                 }
             })
 
@@ -97,23 +98,23 @@ export default class Home extends Component {
         //    check if match exists for both users. 
         APIManager.getAll(`matches?matched_with_id=${matched_with_id}`)
             .then(response => {
-                console.log("response",response)
+                console.log("response", response)
                 //    if so, change status to matched.
                 if (response[0]) {
                     match.id = response[iterator].id
                     console.log("match exists", match)
                     APIManager.update(`matches`, match)
-                    .then(() => {
-                        this.getdaters()
-                    })
+                        .then(() => {
+                            this.getdaters()
+                        })
                 }
                 // if not, create it and change status to rejected. if so, change status to rejected.  
                 else {
                     console.log("match doesn't exist", match)
                     APIManager.createNew(`matches`, match)
-                    .then(() => {
-                        this.getdaters()
-                    })
+                        .then(() => {
+                            this.getdaters()
+                        })
                 }
             })
 
@@ -123,11 +124,10 @@ export default class Home extends Component {
         // console.log(this.state.matches)
         return (
             <div className="main">
-                <h1>Matches</h1>
-                <div>
+                {/* <h1>Matches</h1> */}
+                {/* <div>
                     <Filter />
-                </div>
-                <div>
+                </div> */}
                     {this.state.matches.map((match, i) =>
                         <MainMatches
                             handleMatch={this.handleMatch}
@@ -137,9 +137,10 @@ export default class Home extends Component {
                             key={match.id}
                         />
                     )}
-                </div>
+                {/* <div className={"matchContainer"}></div>
+                <div className={"matchList"}>
+                </div> */}
             </div>
         )
-    }
-
+}
 }

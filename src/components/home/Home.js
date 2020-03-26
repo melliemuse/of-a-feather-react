@@ -3,16 +3,14 @@ import './Home.css'
 import APIManager from '../helpers/APIManager'
 import MainMatches from './MainMatches'
 import GridList from '@material-ui/core/GridList';
-import Coverflow from 'react-coverflow';
 
 export default class Home extends Component {
     state = {
         attachment_style: null,
         dater_id: null,
         matches: [],
-        match_status: [],
+        match_status: []
     }
-
 
     componentDidMount() {
         // Query API to return current logged in user's dater information
@@ -123,40 +121,26 @@ export default class Home extends Component {
     }
 
     render() {
-
-
+        // console.log(this.state.matches)
         return (
-
-            <div id="flexScroll">
-
-                <Coverflow
-                    width={960}
-                    height={1300}
-                    // displayQuantityOfSide={2}
-                    navigation={true}
-                    enableHeading={true}
-                    infiniteScroll={true}
-                >
-                    <div
-                        role="menuitem"
-                        tabIndex="0"
-                    >
-                        
-                        {
-                        this.state.matches.map((match, i) => {
-                            return <img id="profile_pic" src={match.profile_pic}/>
-                               
-                
-                })
-                }
-                        
-
-
+            <div className="main">
+                {/* <h1>Matches</h1> */}
+                {/* <div>
+                    <Filter />
+                </div> */}
+                <div className={"matchContainer"}></div>
+                    {this.state.matches.map((match, i) =>
+                        <MainMatches
+                            handleMatch={this.handleMatch}
+                            handlePass={this.handlePass}
+                            iterator={i}
+                            match={match}
+                            key={match.id}
+                        />
+                    )}
+                <div className={"matchList"}>
                 </div>
-
-                </Coverflow>
-
             </div>
         )
-    }
+}
 }

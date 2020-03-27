@@ -8,11 +8,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 900,
+    height: 1000,
   },
   container: {
     display: 'flex',
     padding: '30px',
+    margin: '0 0 40px'
   },
   paper: {
     margin: theme.spacing(3),
@@ -47,8 +48,8 @@ const useStyles = makeStyles(theme => ({
                 {/* <h4>Age</h4> */}
                 <p>{props.match.age}</p>
                 <p>{props.match.location}</p>
-                <div style={{"max-width": "280px"}}>
-                <p style={{"line-height": 20}}>"{props.match.tagline}"</p>
+                <div style={{"maxWidth": "280px"}}>
+                <p style={{"lineHeight": 1}}>"{props.match.tagline}"</p>
                 </div>
                 {/* <h4>Tagline</h4> */}
                 {/* <p>{props.match.bio}</p> */}

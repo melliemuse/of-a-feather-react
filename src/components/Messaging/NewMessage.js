@@ -39,7 +39,7 @@ export default class NewMessage extends Component {
             <form>
             <TextField
           id="message_body"
-          label="Multiline"
+          label="New Message"
           multiline
           rows="4"
           value={this.state.message_body}

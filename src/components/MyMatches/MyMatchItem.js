@@ -8,14 +8,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 1000,
+    height: 900,
   },
   container: {
     display: 'flex',
     padding: '30px',
   },
   paper: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(3),
   },
 }));
     
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
         
         <Collapse in={checked} collapsedHeight={600}>
           <Paper elevation={4} className={classes.paper}>
-            
+              <div style={{padding: "50px"}}>
           <img id="profile_pic" src={props.match.profile_pic} alt='avatar'></img>
                 <h3>{props.match.user.first_name}</h3>
                 <button onClick={() => history.push(`/messages/${props.match_id}`)}>View Messages</button>
@@ -47,7 +47,9 @@ const useStyles = makeStyles(theme => ({
                 {/* <h4>Age</h4> */}
                 <p>{props.match.age}</p>
                 <p>{props.match.location}</p>
-                <p>"{props.match.tagline}"</p>
+                <div style={{"max-width": "280px"}}>
+                <p style={{"line-height": 20}}>"{props.match.tagline}"</p>
+                </div>
                 {/* <h4>Tagline</h4> */}
                 {/* <p>{props.match.bio}</p> */}
                 {props.match.smoker && <p>Smoker</p>}
@@ -58,6 +60,8 @@ const useStyles = makeStyles(theme => ({
                 <p>{props.match.interests}</p>
                 <h4>Bio</h4>
                 <p>{props.match.bio}</p>
+              </div>
+            
                 
 
           </Paper>

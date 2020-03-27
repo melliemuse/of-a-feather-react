@@ -1,7 +1,11 @@
 import React, { Component } from "react"
 import { register } from "../helpers/simpleAuth"
 import Mike from "../assets/default_avatar.png"
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import './Register.css'
+import Button from '@material-ui/core/Button';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 
 class Register extends Component {
@@ -85,20 +89,35 @@ class Register extends Component {
         return (
             <main style={{ textAlign: "center" }}>
                 <h1 className="h3 mb-3 font-weight-normal">Register and Create Your Profile!</h1>
-                <button onClick={this.uploadWidget}>Upload Profile Picture</button>
-                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300"></img>}
-                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300" style={{display: "block"}} ></img>}
+                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300" style={{display: "block"}}></img>}
+                <Button
+                    // style={{marginRight: spacing + 'em'}}
+                    style={{display: "block"}}
+                    style={{float:"center"}}
+                    variant="contained"
+                    color="primary"
+                    onClick={this.uploadWidget}
+                    startIcon={<PhotoCamera />}
+                >
+                    Upload Profile Picture
+      </Button>
+                {/* <button onClick={this.uploadWidget}>Upload Profile Picture</button> */}
+                
 
                 <form className="form--login" onSubmit={this.handleRegister}>
                     <fieldset>
-                        <label htmlFor="userName"> Username </label>
-                        <input onChange={(evt) => this.handleInputChange(evt)}
+                    <label htmlFor="userName"> Username </label>
+                        <input id="userName" label="username" variant="outlined"
+                            onChange={(evt) => this.handleInputChange(evt)}
                             id="userName"
                             type="text"
                             name="userName"
                             className="form-control"
                             placeholder="Username"
-                            required autoFocus />
+                            required autoFocus
+                        />
+
                     </fieldset>
                     <fieldset>
                         <label htmlFor="firstName"> First Name </label>
@@ -299,9 +318,9 @@ class Register extends Component {
                     </fieldset>
                     <fieldset>
 
-                        <button type="submit">
+                        <Button type="submit">
                             Register
-            </button>
+            </Button>
                     </fieldset>
                 </form>
             </main>

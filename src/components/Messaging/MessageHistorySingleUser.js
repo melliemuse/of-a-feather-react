@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import APIManager from '../helpers/APIManager'
 import MessageEach from './MessageEach'
 import NewMessage from './NewMessage'
+import MyMatchList from '../MyMatches/MyMatchList'
 
 export default class MessageHistorySingleUser extends Component {
     state = {
@@ -42,13 +43,20 @@ export default class MessageHistorySingleUser extends Component {
     render() {
         console.log(this.state.messages)
         return (
-            <>
+            <div style={{display: 'flex'}}>
             
+            <div>
+                <h2>Messages</h2>
             {this.state.messages.map(message => {
                 return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props} currentUser={this.state.currentUser}/>
             })}
             <NewMessage message={this.state.message} postMessage={this.postMessage} {...this.props}/>
-            </>
+            </div>
+            <div>
+            
+            <MyMatchList/>
+            </div>
+            </div>
         )
     }
 }

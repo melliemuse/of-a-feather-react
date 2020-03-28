@@ -2,3 +2,7 @@
     width: 200px;
     height: auto;
 }
+fieldset {
+   border: none;
+   margin: 0;
+}

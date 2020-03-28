@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import APIManager from '../helpers/APIManager'
+import TextField from '@material-ui/core/TextField';
+
+
 
 export default class NewMessage extends Component {
+    
     state = {
         message_body: ''
     }
@@ -33,8 +37,18 @@ export default class NewMessage extends Component {
         return (
             <>
             <form>
-                <textarea id="message_body" placeholder="Type your message" value={this.state.message_body} autoFocus onChange={this.handleFieldChange}/>
-            </form>
+            <TextField
+          id="message_body"
+          label="New Message"
+          multiline
+          rows="4"
+          value={this.state.message_body}
+          placeholder="Type your message"
+          autoFocus
+          onChange={this.handleFieldChange} 
+          variant="outlined"
+        />
+          </form>
             <button onClick={this.handleSubmit}>Send message</button>
             </>
         )

@@ -3,7 +3,25 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.profile_pic {
-    width: 250px;
+#profile_pic {
+    width: 300px;
     height: auto;
+}
+.main {
+    margin-top: 25px;
+}
+.matchContainer {
+    display: 'flex';
+    /* flex-wrap: 'wrap'; */
+    justify-content: 'space-around';
+    overflow: 'hidden'
+}
+.matchList {
+        /* flex-wrap: 'nowrap'; */
+        /* transform: 'translateZ(0)'; */
+}
+#flexScroll {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    flex-direction: column;
 }

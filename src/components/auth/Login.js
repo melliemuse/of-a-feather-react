@@ -37,7 +37,7 @@ export default function Login() {
 	return (
 		<main style={{ textAlign: 'center' }}>
 			<form className="form--login" onSubmit={handleLogin}>
-				<h1 className="h3 mb-3 font-weight-normal">Login to Bangazon</h1>
+				<h1 className="h3 mb-3 font-weight-light">Login to Of A Feather</h1>
 				<fieldset>
 					<label htmlFor="userName"> Username </label>
 					<input

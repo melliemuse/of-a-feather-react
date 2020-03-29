@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Home.css'
 import APIManager from '../helpers/APIManager'
 import MainMatches from './MainMatches'
-import GridList from '@material-ui/core/GridList';
+import Paper from '@material-ui/core/Paper';
 
 export default class Home extends Component {
     state = {
@@ -80,8 +80,6 @@ export default class Home extends Component {
                         })
                 }
             })
-
-
     }
 
     handlePass = (matched_with_id, iterator) => {
@@ -117,30 +115,32 @@ export default class Home extends Component {
                         })
                 }
             })
-
     }
 
     render() {
         // console.log(this.state.matches)
         return (
+            <>
             <div className="main">
-                {/* <h1>Matches</h1> */}
-                {/* <div>
-                    <Filter />
-                </div> */}
-                <div className={"matchContainer"}></div>
-                    {this.state.matches.map((match, i) =>
-                        <MainMatches
-                            handleMatch={this.handleMatch}
-                            handlePass={this.handlePass}
-                            iterator={i}
-                            match={match}
-                            key={match.id}
-                        />
-                    )}
-                <div className={"matchList"}>
-                </div>
+                <h2>Matches</h2>
+
+                    </div >
+                <div className={"matchContainer"}>
+
+                    {
+                        this.state.matches.map((match, i) =>
+                            <MainMatches
+                                handleMatch={this.handleMatch}
+                                handlePass={this.handlePass}
+                                iterator={i}
+                                match={match}
+                                key={match.id}
+                            />
+                        )
+                    }
+
             </div>
+            </>
         )
-}
+    }
 }

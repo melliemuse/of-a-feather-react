@@ -4,20 +4,22 @@
     flex-wrap: wrap;
 }
 #profile_pic {
-    width: 300px;
+    width: 345px;
     height: auto;
-}
-.main {
-    margin-top: 25px;
+    /* max-height: 345px; */
+    /* border: 2px solid white; */
 }
 .matchContainer {
-    display: 'flex';
-    /* flex-wrap: 'wrap'; */
-    justify-content: 'space-around';
-    overflow: 'hidden'
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    /* overflow: hidden; */
+    height: 1000px;
+    /* font-size: 23px; */
 }
 .matchList {
-        /* flex-wrap: 'nowrap'; */
+        flex-wrap: 'nowrap';
         /* transform: 'translateZ(0)'; */
 }
 #flexScroll {
@@ -25,3 +27,7 @@
     /* flex-wrap: nowrap; */
     flex-direction: column;
 }
+/* .bg {
+    background-color: rgb(249, 247, 245);
+    height: 3000px;
+} */

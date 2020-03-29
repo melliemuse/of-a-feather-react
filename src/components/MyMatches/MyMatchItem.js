@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
                 <p>{props.match.age}</p>
                 <p>{props.match.location}</p>
                 <div style={{"maxWidth": "280px"}}>
-                <p style={{"lineHeight": 1}}>"{props.match.tagline}"</p>
+                <p style={{"lineHeight": 1.25}}>"{props.match.tagline}"</p>
                 </div>
                 {/* <h4>Tagline</h4> */}
                 {/* <p>{props.match.bio}</p> */}

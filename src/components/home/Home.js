@@ -122,7 +122,7 @@ export default class Home extends Component {
         return (
             <>
             <div className="main">
-                <h2>Matches</h2>
+                <h2>Discover</h2>
 
                     </div >
                 <div className={"matchContainer"}>

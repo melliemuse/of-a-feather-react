@@ -61,7 +61,7 @@ export default class MyMatchList extends Component {
         return (
             <>
             <div className="main">
-                <h2>Match List</h2>
+                <h2>My Matches</h2>
 
             </div>
             <div style={{display: 'flex'}}>

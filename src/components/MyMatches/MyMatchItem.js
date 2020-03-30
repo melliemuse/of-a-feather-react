@@ -17,6 +17,8 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     margin: theme.spacing(3),
+    'width': '445px',
+    'height': '1000px'
   },
 }));
     
@@ -24,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     
     export default function MyMatchItem(props) {
         const classes = useStyles();
-        const [checked, setChecked] = React.useState(false);
+        const [checked, setChecked] = React.useState(true);
       
         const handleChange = () => {
           setChecked(prev => !prev);
@@ -60,7 +62,7 @@ const useStyles = makeStyles(theme => ({
                 <h4>Interests include </h4>
                 <p>{props.match.interests}</p>
                 <h4>Bio</h4>
-                <p>{props.match.bio}</p>
+                <p style={{"lineHeight": 1.25}}>{props.match.bio}</p>
               </div>
             
                 

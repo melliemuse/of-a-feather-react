@@ -10,35 +10,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default function MainMatches(props) {
   const useStyles = makeStyles(theme => ({
-    // root: {
-    //   height: 1000,
-    //   display: 'flex',
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    // },
-    // container: {
-    //   display: 'flex',
-    //   padding: '30px',
-    //   margin: '0 0 40px',
-      
-    // },
-    // paper: {
-    //   margin: theme.spacing(1),
-    //   marginTop: "25px",
-    //   width: '500px',
-    //   // height: '1100px',
-    //   padding: '10px 10px 10px 0',
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    //   alignItems: 'flex-start',
-    //   flexDirection: 'column',
-    //   flexWrap: 'wrap'
-    // },
-    // content: {
-    //   margin: ' 0 auto',
-    //   width: '500px',
-    //   padding: '0 40px 0'
-    // }
     root: {
       height: 1000,
     },
@@ -70,8 +41,7 @@ export default function MainMatches(props) {
       />
       <Collapse in={checked} collapsedHeight={655}>
       <Paper elevation={8} className={classes.paper}>
-        {/* <div className={classes.content} > */}
-        <div style={{padding: "50px"}}>
+        <div style={{padding: "0px 50px", 'margin': '20px'}}>
         <img id="profile_pic" src={props.match.profile_pic}></img>
         <h3>{props.match.user.first_name}</h3>
         <p>{props.match.age}</p>
@@ -96,8 +66,6 @@ export default function MainMatches(props) {
           <BlockTwoToneIcon />
         </IconButton>
         </div>
-        {/* </div> */}
-        {/* </div> */}
       </Paper>
       </Collapse>
       </div>

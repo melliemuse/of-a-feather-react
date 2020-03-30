@@ -4,17 +4,18 @@
     flex-wrap: wrap;
 }
 #profile_pic {
-    width: 345px;
+    max-width: 345px;
     height: auto;
-    /* max-height: 345px; */
+    max-height: 431px;
     /* border: 2px solid white; */
 }
 .matchContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     /* overflow: hidden; */
+    margin: 0 100px 0px;
     height: 1000px;
     /* font-size: 23px; */
 }

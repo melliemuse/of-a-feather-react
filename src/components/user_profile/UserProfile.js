@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from '../helpers/APIManager'
 import './UserProfile.css'
-import Switch from '@material-ui/core/Switch';
 import Paper from '@material-ui/core/Paper';
-import Collapse from '@material-ui/core/Collapse';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class UserProfile extends Component {
 

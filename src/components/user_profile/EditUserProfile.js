@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Mike from "../assets/default_avatar.png"
 import APIManager from '../helpers/APIManager'
+import Paper from '@material-ui/core/Paper';
 
 export default class EditUserProfile extends Component {
 
@@ -120,6 +121,8 @@ export default class EditUserProfile extends Component {
         return (
 
             <main style={{ textAlign: "center" }} className="main">
+                <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
+              <div style={{padding: "50px"}}>
                 <h1 className="profileTitle">Edit Your Profile</h1>
                 <div className="center">
                 <div className="pictureUpload">
@@ -358,6 +361,8 @@ export default class EditUserProfile extends Component {
                 </button>
                     </fieldset>
                 </form>
+                </div>
+                </Paper>
             </main>
         )
     }

@@ -7,7 +7,7 @@
     max-width: 345px;
     height: auto;
     max-height: 431px;
-    /* border: 2px solid white; */
+    box-shadow: 2px 3px 10px darkslategray;
 }
 .matchContainer {
     display: flex;
@@ -28,7 +28,3 @@
     /* flex-wrap: nowrap; */
     flex-direction: column;
 }
-/* .bg {
-    background-color: rgb(249, 247, 245);
-    height: 3000px;
-} */

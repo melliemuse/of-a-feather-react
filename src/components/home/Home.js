@@ -121,7 +121,7 @@ export default class Home extends Component {
         // console.log(this.state.matches)
         return (
             <>
-            <div className="main">
+            <div className="main header-margin">
                 <h2>Discover</h2>
 
                     </div >

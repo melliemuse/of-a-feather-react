@@ -25,7 +25,7 @@ export default function MainMatches(props) {
 
   const classes = useStyles();
   
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
       
   const handleChange = () => {
     setChecked(prev => !prev);
@@ -37,7 +37,7 @@ export default function MainMatches(props) {
       <div className={classes.root}>
       <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
-        label="Full Profile"
+        label="Show"
       />
       <Collapse in={checked} collapsedHeight={655}>
       <Paper elevation={8} className={classes.paper}>
@@ -52,9 +52,9 @@ export default function MainMatches(props) {
         <h4>Looking for</h4>
         <p> {props.match.looking_for}</p>
         <h4>Tagline</h4>
-        <div style={{"maxWidth": "280px"}}>
-          <p style={{ "lineHeight": 1.25, 'textAlign': 'left'}}>"{props.match.tagline}"</p>
-        </div>
+        
+          <p className='tagline'>"{props.match.tagline}"</p>
+       
 
 
         <IconButton onClick={() => props.handleMatch(props.match.id)} color="inherit">

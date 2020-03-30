@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import APIManager from '../helpers/APIManager'
+import './UserProfile.css'
+import Switch from '@material-ui/core/Switch';
+import Paper from '@material-ui/core/Paper';
+import Collapse from '@material-ui/core/Collapse';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default class UserProfile extends Component {
 
@@ -60,11 +65,16 @@ export default class UserProfile extends Component {
     render() {
         return (
             <>
-            <main style={{ textAlign: "center" }}>
-                    <h1 className="h3 mb-3 font-weight-normal">User Profile</h1>
+                <main style={{ textAlign: "center" }} className='main'>
+                    <div>
 
-                    {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
-
+                    <h1 className="profileTitle">User Profile</h1>
+                    </div>
+                    <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
+              <div style={{padding: "50px"}}>
+                    <div className="center">
+                            {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+                    </div>
                     <h3>Username</h3>
                     <p>{this.state.userName}</p>
 
@@ -107,14 +117,16 @@ export default class UserProfile extends Component {
                     <p>{this.state.age_range}</p>
 
                     <h3> Tagline </h3>
-                    <p>{this.state.tagline}</p>
+                    <p className="tagline">{this.state.tagline}</p>
 
                     <h3> Email </h3>
                     <p>{this.state.email}</p>
 
-                    <button onClick={() => {this.props.history.push('/editprofile')}}>Edit</button>
-                </main > 
-                
+                    <button onClick={() => { this.props.history.push('/editprofile') }}>Edit</button>
+                    </div>
+                    </Paper>
+                </main >
+
             </>
         )
     }

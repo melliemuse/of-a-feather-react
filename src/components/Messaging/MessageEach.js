@@ -18,12 +18,8 @@ import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
 
 const useStyles = makeStyles(theme => ({
     container: {
-        // display: 'flex',
         "flex-direction": 'row, wrap',
-        // padding: '10px 40px 10px',
-        width: '350px',
-        // height: '200px',
-        margin: '30px',
+        margin: '0 0 30px',
         'border-radius': '10px',
         'flex-basis': '50%',
         content: {
@@ -32,13 +28,11 @@ const useStyles = makeStyles(theme => ({
         },
     },
     root: {
-        padding: '10px 40px 10px',
-        // width: '350px',
-        // height: '200px',
+        // padding: '10px 40px 10px',
         display: 'flex',
         justifyContent: 'flex-start',
-        "flex-wrap": 'wrap',
-        margin: '30px',
+        // "flex-wrap": 'wrap',
+        // margin: '30px',
         'border-radius': '10px',
         content: {
             height: 3,
@@ -47,15 +41,13 @@ const useStyles = makeStyles(theme => ({
         },
     },
     active: {
-        "background-color": "lightBlue",
+        "background-color": 'rgba(0, 0, 0 )',
+        color: 'white',
         display: 'flex',
         justifyContent: 'flex-start',
         "flex-wrap": 'wrap',
-        alignContent: "space-between",
-        // padding: '10px 40px 30px',
-        // width: '350px',
-        // height: '200px',
-        margin: '30px',
+        // alignContent: "space-between",
+        // margin: '30px',
         'border-radius': '10px',
     },
     buttons: {
@@ -111,10 +103,10 @@ export default function MessageEach(props) {
                         <Avatar src={display.profile_pic} alt="avatar" id="avatar" />
 
                         <CardContent className="classes.content">
-                            <Typography gutterBottom variant="h5" component="h2">
+                            <Typography gutterBottom variant="h5" component="h3">
                                 {display.user.first_name}
                             </Typography>
-                            <Typography variant="body1" color="textSecondary" component="p">
+                            <Typography variant="body1"  component="p">
                                 {!showText && props.message.message_body}
                             </Typography>
                         </CardContent>

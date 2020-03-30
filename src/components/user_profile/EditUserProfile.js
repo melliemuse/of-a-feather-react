@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Mike from "../assets/default_avatar.png"
 import APIManager from '../helpers/APIManager'
+import Paper from '@material-ui/core/Paper';
 
 export default class EditUserProfile extends Component {
 
@@ -119,11 +120,18 @@ export default class EditUserProfile extends Component {
         console.log(this.state.profile_pic)
         return (
 
-            <main style={{ textAlign: "center" }}>
-                <h1 className="h3 mb-3 font-weight-normal">Edit Your Profile</h1>
-                <button onClick={this.uploadWidget}>Change Your Profile Picture</button>
+            <main style={{ textAlign: "center" }} className="main">
+                <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
+              <div style={{padding: "50px"}}>
+                <h1 className="profileTitle">Edit Your Profile</h1>
+                <div className="center">
+                <div className="pictureUpload">
                 {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300"></img>}
                 {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+                <button onClick={this.uploadWidget}>Change Your Profile Picture</button>
+                </div>
+
+                </div>
 
                 <form className="form--login" onSubmit={this.handleSubmit}>
                     <fieldset>
@@ -353,6 +361,8 @@ export default class EditUserProfile extends Component {
                 </button>
                     </fieldset>
                 </form>
+                </div>
+                </Paper>
             </main>
         )
     }

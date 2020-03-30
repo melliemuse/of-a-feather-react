@@ -36,17 +36,21 @@ export default class NewMessage extends Component {
     render() {
         return (
             <>
-            <form>
+            <form style={{'margin': '30px 0 30px'}}>
             <TextField
+          style={{width: '400px'}}
           id="message_body"
           label="New Message"
           multiline
           rows="4"
+          variant="filled"
+          color="primary"
           value={this.state.message_body}
-          placeholder="Type your message"
+        //   placeholder="Type your message"
           autoFocus
           onChange={this.handleFieldChange} 
-          variant="outlined"
+        //   variant="outlined"
+          
         />
           </form>
             <button onClick={this.handleSubmit}>Send message</button>

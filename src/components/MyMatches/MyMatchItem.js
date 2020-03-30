@@ -12,11 +12,13 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     display: 'flex',
-    padding: '30px',
+    padding: '0 30px 30px',
     margin: '0 0 40px'
   },
   paper: {
     margin: theme.spacing(3),
+    'width': '445px',
+    'height': '1000px'
   },
 }));
     
@@ -24,21 +26,23 @@ const useStyles = makeStyles(theme => ({
     
     export default function MyMatchItem(props) {
         const classes = useStyles();
-        const [checked, setChecked] = React.useState(false);
+        const [checked, setChecked] = React.useState(true);
       
         const handleChange = () => {
           setChecked(prev => !prev);
         };
+
     const history = useHistory()
+
     return (
         <div className={classes.root}>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
         label="Show"
-      />
+      /> */}
       <div className={classes.container}>
         
-        <Collapse in={checked} collapsedHeight={600}>
+        {/* <Collapse in={checked} collapsedHeight={600}> */}
           <Paper elevation={4} className={classes.paper}>
               <div style={{padding: "50px"}}>
           <img id="profile_pic" src={props.match.profile_pic} alt='avatar'></img>
@@ -49,7 +53,7 @@ const useStyles = makeStyles(theme => ({
                 <p>{props.match.age}</p>
                 <p>{props.match.location}</p>
                 <div style={{"maxWidth": "280px"}}>
-                <p style={{"lineHeight": 1}}>"{props.match.tagline}"</p>
+                <p style={{"lineHeight": 1.25}}>"{props.match.tagline}"</p>
                 </div>
                 {/* <h4>Tagline</h4> */}
                 {/* <p>{props.match.bio}</p> */}
@@ -60,13 +64,13 @@ const useStyles = makeStyles(theme => ({
                 <h4>Interests include </h4>
                 <p>{props.match.interests}</p>
                 <h4>Bio</h4>
-                <p>{props.match.bio}</p>
+                <p style={{"lineHeight": 1.25}}>{props.match.bio}</p>
               </div>
             
                 
 
           </Paper>
-        </Collapse>
+        {/* </Collapse> */}
       </div>
     </div>
             // <div className="main flex">

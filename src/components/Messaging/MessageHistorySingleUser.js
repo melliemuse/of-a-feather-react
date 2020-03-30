@@ -3,6 +3,7 @@ import APIManager from '../helpers/APIManager'
 import MessageEach from './MessageEach'
 import NewMessage from './NewMessage'
 import MyMatchList from '../MyMatches/MyMatchList'
+import Card from '@material-ui/core/Card';
 
 export default class MessageHistorySingleUser extends Component {
     state = {
@@ -43,16 +44,17 @@ export default class MessageHistorySingleUser extends Component {
     render() {
         console.log(this.state.messages)
         return (
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', 'justifyContent': 'space-between'}}>
             
-            <div>
-                <h2>Messages</h2>
+            <div className="main header-margin" style={{margin: "0px 120px 20px 100px"}}>
+
+                <h2 className="title">Messages</h2>
             {this.state.messages.map(message => {
                 return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props} currentUser={this.state.currentUser}/>
             })}
             <NewMessage message={this.state.message} postMessage={this.postMessage} {...this.props}/>
             </div>
-            <div>
+            <div style={{marginRight: '500px'}}>
             
             <MyMatchList/>
             </div>

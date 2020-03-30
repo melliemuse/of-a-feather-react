@@ -4,20 +4,23 @@
     flex-wrap: wrap;
 }
 #profile_pic {
-    width: 300px;
+    max-width: 345px;
     height: auto;
-}
-.main {
-    margin-top: 25px;
+    max-height: 431px;
+    box-shadow: 2px 3px 10px darkslategray;
 }
 .matchContainer {
-    display: 'flex';
-    /* flex-wrap: 'wrap'; */
-    justify-content: 'space-around';
-    overflow: 'hidden'
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    /* overflow: hidden; */
+    margin: 0 100px 0px;
+    height: 1000px;
+    /* font-size: 23px; */
 }
 .matchList {
-        /* flex-wrap: 'nowrap'; */
+        flex-wrap: 'nowrap';
         /* transform: 'translateZ(0)'; */
 }
 #flexScroll {

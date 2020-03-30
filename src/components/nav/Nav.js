@@ -81,17 +81,19 @@ export default function Nav() {
                     </Link>
 
                     <Link to='/mymatches'>
-                    <Fab color="secondary" aria-label="add" className={classes.fabButton}>
+                    {/* <Fab color="secondary" aria-label="add" className={classes.fabButton}>
                         <FavoriteIcon />
                         <AddIcon />
-                    </Fab>
+                    </Fab> */}
                     </Link>
 
                     <div className={classes.grow} />
 
-                        {/* <IconButton color="inherit">
+                    <Link to='/mymatches'>
+                        <IconButton color="inherit">
                             <GradeTwoToneIcon />
-                        </IconButton> */}
+                        </IconButton>
+                    </Link>
 
                     <Link to='/userprofile'>
                         <IconButton edge="end" color="inherit">

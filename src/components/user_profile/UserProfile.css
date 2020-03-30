@@ -1,0 +1,18 @@
+.pictureUpload {
+    display: block;
+    margin: 0 auto;
+    padding: 0 0 0;
+}
+.profileTitle {
+    margin: 0 0 25px;
+}
+.tagline {
+    line-height: 1.25; 
+    text-align: left; 
+    max-width: 280px
+}
+.paper {
+    margin: 0 auto;
+    width: 445px;
+    height: 1400px
+  }

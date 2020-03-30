@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     display: 'flex',
-    padding: '30px',
+    padding: '0 30px 30px',
     margin: '0 0 40px'
   },
   paper: {
@@ -31,16 +31,18 @@ const useStyles = makeStyles(theme => ({
         const handleChange = () => {
           setChecked(prev => !prev);
         };
+
     const history = useHistory()
+
     return (
         <div className={classes.root}>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
         label="Show"
-      />
+      /> */}
       <div className={classes.container}>
         
-        <Collapse in={checked} collapsedHeight={600}>
+        {/* <Collapse in={checked} collapsedHeight={600}> */}
           <Paper elevation={4} className={classes.paper}>
               <div style={{padding: "50px"}}>
           <img id="profile_pic" src={props.match.profile_pic} alt='avatar'></img>
@@ -68,7 +70,7 @@ const useStyles = makeStyles(theme => ({
                 
 
           </Paper>
-        </Collapse>
+        {/* </Collapse> */}
       </div>
     </div>
             // <div className="main flex">

@@ -25,7 +25,7 @@ export default function MainMatches(props) {
 
   const classes = useStyles();
   
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
       
   const handleChange = () => {
     setChecked(prev => !prev);

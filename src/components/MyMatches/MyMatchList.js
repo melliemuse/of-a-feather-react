@@ -60,8 +60,8 @@ export default class MyMatchList extends Component {
         console.log(this.state)
         return (
             <>
-            <div className="main">
-                <h2>My Matches</h2>
+            <div className="main header-margin">
+                <h2 className="title">My Matches</h2>
 
             </div>
             <div style={{display: 'flex'}}>

@@ -40,6 +40,14 @@ export default class MessageHistorySingleUser extends Component {
             this.setState({messages: response})
         }))
     }
+    viewMessage = () => {
+        APIManager.getAll(`messages?match_id=${this.props.match.params.id}`)
+        .then(response => this.setState({messages: response}))
+        .then(() => {
+            APIManager.getAll('daters')
+            .then((dater) => this.setState({currentUser: dater}))
+        })
+    }
 
     render() {
         console.log(this.state.messages)
@@ -56,7 +64,7 @@ export default class MessageHistorySingleUser extends Component {
             </div>
             <div style={{marginRight: '500px'}}>
             
-            <MyMatchList/>
+            <MyMatchList viewMessage={this.viewMessage}/>
             </div>
             </div>
         )

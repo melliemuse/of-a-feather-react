@@ -1,5 +1,5 @@
 import React from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, setState} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Paper from '@material-ui/core/Paper';
@@ -34,6 +34,11 @@ const useStyles = makeStyles(theme => ({
 
     const history = useHistory()
 
+    const handleClick = () => {
+      history.push(`/messages/${props.match_id}`)
+      props.viewMessage()
+    }
+
     return (
         <div className={classes.root}>
       {/* <FormControlLabel
@@ -47,16 +52,13 @@ const useStyles = makeStyles(theme => ({
               <div style={{padding: "50px"}}>
           <img id="profile_pic" src={props.match.profile_pic} alt='avatar'></img>
                 <h3>{props.match.user.first_name}</h3>
-                <button onClick={() => history.push(`/messages/${props.match_id}`)}>View Messages</button>
+                <button onClick={handleClick}>View Messages</button>
                 <button onClick={() => props.handleUnmatch(props.i)}>Unmatch</button>
-                {/* <h4>Age</h4> */}
                 <p>{props.match.age}</p>
                 <p>{props.match.location}</p>
                 <div style={{"maxWidth": "280px"}}>
                 <p style={{"lineHeight": 1.25}}>"{props.match.tagline}"</p>
                 </div>
-                {/* <h4>Tagline</h4> */}
-                {/* <p>{props.match.bio}</p> */}
                 {props.match.smoker && <p>Smoker</p>}
                 {props.match.kids && <p>Has kids</p>}
                 <h4>Looking for</h4>

@@ -109,10 +109,14 @@ export default class TestAttachment extends Component {
 
     render() {
         return (
-            <main className="center_noflex">
-                <h1>What is My Attachment Style?</h1>
-                <h5>Your matches will be better suited to you if you answer honestly- think of your <em>most common</em> relationship dynamics</h5>
-                <form className="center">
+            <main className="main">
+                <h1 className="attachmentTitle">What is My Attachment Style?</h1>
+                <h5 className="subtitle">Based on your <em>most common</em> relationships</h5>
+                
+                <div className="center">
+
+               
+                <form >
 
                     {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
                         return <TestItem
@@ -169,6 +173,7 @@ export default class TestAttachment extends Component {
 
 
                 </form>
+                </div>
                 <button onClick={() => this.handleSubmit()}>See Your Results</button>
             </main>
         )

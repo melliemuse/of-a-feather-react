@@ -95,19 +95,23 @@ export default function Nav() {
                         </IconButton>
                     </Link>
 
-                    <Link to='/userprofile'>
-                        <IconButton edge="end" color="inherit">
-                            <AccountCircleTwoToneIcon />
-                        </IconButton>
-                    </Link>
+                    
 
 
                     {isAuthenticated() ?
+                    <>
                         <Link to='/' onClick={handleLogout} >
                         <IconButton edge="end" color="inherit">
                             <InputTwoToneIcon />
                         </IconButton>
                     </Link>
+
+                        <Link to='/userprofile'>
+                        <IconButton edge="end" color="inherit">
+                            <AccountCircleTwoToneIcon />
+                        </IconButton>
+                    </Link>
+                    </>
                         :
                         <>
                             <Link to='/register'>

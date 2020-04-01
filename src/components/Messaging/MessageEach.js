@@ -17,7 +17,7 @@ import VisibilityTwoToneIcon from '@material-ui/icons/VisibilityTwoTone';
 const useStyles = makeStyles(theme => ({
     container: {
         "flex-direction": 'row, wrap',
-        margin: '0 0 30px',
+        margin: '0 0 20px',
         'border-radius': '10px',
         'flex-basis': '50%',
         content: {
@@ -30,13 +30,13 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'flex-start',
         'border-radius': '10px',
         content: {
-            height: 3,
+            height: 2,
             width: '20px',
             padding: 0,
         },
     },
     active: {
-        "background-color": 'rgba(0, 0, 0 )',
+        "background-color": 'rgba(0, 0, 0, .5 )',
         color: 'white',
         display: 'flex',
         justifyContent: 'flex-start',
@@ -83,7 +83,7 @@ export default function MessageEach(props) {
     const classes = useStyles();
     const [showText, setShowText] = useState(false);
 
-
+// display each message with attendent buttons and different background if sender is current user
     return (
         <>
             <div className={classes.container} >
@@ -107,13 +107,13 @@ export default function MessageEach(props) {
                 <div>
                         <CardActionArea>
                             <CardActions className="buttons">
-                                {!showText && displayActive && <EditTwoToneIcon size="medium" color="action" onClick={() => setShowText(!showText)}></EditTwoToneIcon>}
+                                {!showText && displayActive && <EditTwoToneIcon size="medium" color="white" onClick={() => setShowText(!showText)}></EditTwoToneIcon>}
 
-                                {showText && <VisibilityTwoToneIcon size="medium" color="action" onClick={() => setShowText(!showText)}>See Message</VisibilityTwoToneIcon>}
+                                {showText && <VisibilityTwoToneIcon size="medium" color="white" onClick={() => setShowText(!showText)}>See Message</VisibilityTwoToneIcon>}
 
                                 {showText && <EditMessage {...props} />}
 
-                                {displayActive && <DeleteTwoToneIcon size="medium" color="action" onClick={() => props.deleteMessage(props.message.id)}></DeleteTwoToneIcon>}
+                                {displayActive && <DeleteTwoToneIcon size="medium" color="white" onClick={() => props.deleteMessage(props.message.id)}></DeleteTwoToneIcon>}
                             </CardActions>
                         </CardActionArea>
                 </div>

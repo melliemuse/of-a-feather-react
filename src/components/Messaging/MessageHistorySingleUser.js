@@ -58,7 +58,7 @@ export default class MessageHistorySingleUser extends Component {
 
                 <h2 className="title">Messages</h2>
 
-                <Card style={{padding: '25px', 'backgroundColor': 'rgba(159, 200, 212, .2)'}}>
+                <Card style={{padding: '10px', 'backgroundColor': 'rgba(159, 200, 212, .2)'}}>
             {this.state.messages.map(message => {
                 return <MessageEach message={message} key={message.id} editMessage={this.editMessage} deleteMessage={this.deleteMessage} {...this.props} currentUser={this.state.currentUser}/>
             })}

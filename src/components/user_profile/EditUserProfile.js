@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Mike from "../assets/default_avatar.png"
 import APIManager from '../helpers/APIManager'
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 export default class EditUserProfile extends Component {
 
@@ -356,9 +357,13 @@ export default class EditUserProfile extends Component {
                     </fieldset> */}
                     <fieldset>
 
-                        <button type="submit">
+                        <Button 
+                        type="submit"
+                        variant='contained'
+                        color='secondary'
+                        >
                             Make Changes
-                </button>
+                </Button>
                     </fieldset>
                 </form>
                 </div>

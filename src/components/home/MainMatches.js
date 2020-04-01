@@ -39,7 +39,7 @@ export default function MainMatches(props) {
         control={<Switch checked={checked} onChange={handleChange} />}
         label="Show"
       />
-      <Collapse in={checked} collapsedHeight={655}>
+      <Collapse in={checked} collapsedHeight={525}>
       <Paper elevation={8} className={classes.paper}>
         <div style={{padding: "0px 50px", 'margin': '20px'}}>
         <img id="profile_pic" src={props.match.profile_pic}></img>

@@ -36,7 +36,9 @@ const useStyles = makeStyles(theme => ({
 
     const handleClick = () => {
       history.push(`/messages/${props.match_id}`)
-      props.viewMessage()
+      if (props.viewMessage) {
+        props.viewMessage()
+      }
     }
 
     return (

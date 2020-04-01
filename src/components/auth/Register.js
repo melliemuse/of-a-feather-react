@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './Register.css'
 import Button from '@material-ui/core/Button';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import Paper from '@material-ui/core/Paper';
 
 
 class Register extends Component {
@@ -20,8 +21,8 @@ class Register extends Component {
         attachment_style_id: 1,
         location: "",
         bio: "",
-        gender: "female",
-        gender_preference: "female",
+        gender: "Female",
+        gender_preference: "Female",
         kids: 0,
         smoker: 0,
         looking_for: "relationship",
@@ -87,34 +88,37 @@ class Register extends Component {
     render() {
         console.log(this.state.profile_pic)
         return (
-            <main style={{ textAlign: "center" }}>
-                <h1 className="h3 mb-3 font-weight-normal">Register and Create Your Profile!</h1>
-                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300" style={{display: "block"}} ></img>}
-                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300" style={{display: "block"}}></img>}
-                <Button
-                    // style={{marginRight: spacing + 'em'}}
-                    style={{display: "block"}}
-                    style={{float:"center"}}
-                    variant="contained"
-                    color="primary"
-                    onClick={this.uploadWidget}
-                    startIcon={<PhotoCamera />}
-                >
-                    Upload Profile Picture
-      </Button>
-                {/* <button onClick={this.uploadWidget}>Upload Profile Picture</button> */}
-                
+            <main  className="main">
+                <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
+                <div style={{padding: "50px"}}>
+                <h1 className="profileTitle">Register</h1>
+                <div className="center">
+                    <div className="pictureUpload">
+                        {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300" style={{margin: '20px'}} ></img>}
+                        {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300" style={{margin: '20px'}}></img>}
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="medium"
+                            onClick={this.uploadWidget}
+                            startIcon={<PhotoCamera />}
+                        >
+                        </Button>
+                    </div>
+                </div>
 
-                <form className="form--login" onSubmit={this.handleRegister}>
+
+
+                <form className="form--login" onSubmit={this.handleRegister} style={{ textAlign: "left" }}>
                     <fieldset>
-                    <label htmlFor="userName"> Username </label>
+                        <label htmlFor="userName"> Username </label>
                         <input id="userName" label="username" variant="outlined"
                             onChange={(evt) => this.handleInputChange(evt)}
                             id="userName"
                             type="text"
                             name="userName"
                             className="form-control"
-                            placeholder="Username"
+                            // placeholder="Username"
                             required autoFocus
                         />
 
@@ -126,7 +130,7 @@ class Register extends Component {
                             type="text"
                             name="firstName"
                             className="form-control"
-                            placeholder="First name"
+                            // placeholder="First name"
                             required autoFocus />
                     </fieldset>
                     <fieldset>
@@ -135,8 +139,8 @@ class Register extends Component {
                             id="lastName"
                             type="text"
                             name="lastName"
-                            className="form-control"
-                            placeholder="Last name"
+                            // className="form-control"
+                            // placeholder="Last name"
                             required />
                     </fieldset>
                     <fieldset>
@@ -181,13 +185,13 @@ class Register extends Component {
                             className="form-control"
                             id="gender_preference"
                             onChange={this.handleInputChange}>
-                            <option value="female">
+                            <option value="Female">
                                 Female
                   </option>
-                            <option value="male">
+                            <option value="Male">
                                 Male
                   </option>
-                            <option value="all">
+                            <option value="All">
                                 All
                   </option>
                         </select>
@@ -293,7 +297,7 @@ class Register extends Component {
                             type="email"
                             name="email"
                             className="form-control"
-                            placeholder="Email address"
+                            // placeholder="Email address"
                             required />
                     </fieldset>
                     <fieldset>
@@ -303,7 +307,7 @@ class Register extends Component {
                             type="password"
                             name="password"
                             className="form-control"
-                            placeholder="Password"
+                            // placeholder="Password"
                             required />
                     </fieldset>
                     <fieldset>
@@ -313,16 +317,21 @@ class Register extends Component {
                             type="password"
                             name="verifyPassword"
                             className="form-control"
-                            placeholder="Verify password"
+                            // placeholder="Verify password"
                             required />
                     </fieldset>
                     <fieldset>
 
-                        <Button type="submit">
+                        <Button type="submit"
+                        color="secondary"
+                        variant="contained"
+                        >
                             Register
             </Button>
                     </fieldset>
                 </form>
+                </div>
+                </Paper>
             </main>
         )
     }

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './TestAttachment.css'
 import TestItem from './Test_Item'
 import APIManager from '../helpers/APIManager'
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 
 export default class TestAttachment extends Component {
     state = {
@@ -25,7 +28,7 @@ export default class TestAttachment extends Component {
 
     componentDidMount = () => {
         APIManager.getAll('daters')
-        .then(response => this.setState({'dater': response[0]}))
+            .then(response => this.setState({ 'dater': response[0] }))
     }
 
     handleSelection = (event, value, numvalue) => {
@@ -38,7 +41,7 @@ export default class TestAttachment extends Component {
         let values = value.split('-')[0]
         //  If question carries an avoidant value, check to see if question has already been answered
         //  If it has, reassign value in calculation object
-        
+
         if (values === 'avoidantValue' && !this.state.avoidantCalc[event.currentTarget.name]) {
             avoidantCalc[event.currentTarget.name] = parseInt(score)
             const combo = Object.assign(this.state.avoidantCalc, avoidantCalc)
@@ -55,7 +58,7 @@ export default class TestAttachment extends Component {
             else {
                 this.setState({ avoidant: avoidantscore })
             }
-            
+
         }
         if (values === 'anxiousValue' && !this.state.anxiousCalc[event.currentTarget.name]) {
             anxiousCalc[event.currentTarget.name] = parseInt(score)
@@ -79,7 +82,7 @@ export default class TestAttachment extends Component {
 
     handleSubmit = () => {
         console.log("handle submit fired")
-        
+
         const secure_id = 1
         const anxious_id = 2
         const avoidant_id = 3
@@ -96,41 +99,45 @@ export default class TestAttachment extends Component {
             dater_attachment_id = avoidant_id
         }
 
-        
-            let updater = this.state.dater
-            console.log(this.state.dater)
-            updater.attachment_style_id = dater_attachment_id
-            console.log(updater)
-    
-            APIManager.update("daters", updater)
+
+        let updater = this.state.dater
+        console.log(this.state.dater)
+        updater.attachment_style_id = dater_attachment_id
+        console.log(updater)
+
+        APIManager.update("daters", updater)
             .then(this.props.history.push("/"))
-        
+
     }
 
     render() {
         return (
-            <main className="main">
-                <h1 className="attachmentTitle">What is My Attachment Style?</h1>
-                <h5 className="subtitle">Based on your <em>most common</em> relationships</h5>
-                
-                <div className="center">
+            <main >
+                <div className="main top-margin">
+                    <h1 className="attachmentTitle">What is My Attachment Style?</h1>
+                    <h5 className="subtitle">Based on your <em>most common</em> relationships</h5>
+                </div>
 
-               
-                <form >
+                <div className="center flex-center">
 
-                    {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
-                        return <TestItem
-                            key={i}
-                            id={i + 1}
-                            scoreType={"normal"}
-                            scores={this.state.scores}
-                            values={this.state.values[0]+"-"+i+1}
-                            high_anxiety_question={high_anxiety_question}
-                            handleSelection={this.handleSelection}
-                            {...this.props}
-                        />
-                    })}
-                    {/* {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
+
+                    <form >
+                        <Card>
+
+                            <Paper elevation={4} style={{padding: '5px', 'margin': '10px'}}>
+                                {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
+                                    return <TestItem
+                                        key={i}
+                                        id={i + 1}
+                                        scoreType={"normal"}
+                                        scores={this.state.scores}
+                                        values={this.state.values[0] + "-" + i + 1}
+                                        high_anxiety_question={high_anxiety_question}
+                                        handleSelection={this.handleSelection}
+                                        {...this.props}
+                                    />
+                                })}
+                                {/* {this.state.questions.high_anxiety_questions.map((high_anxiety_question, i) => {
                         return <TestItem
                             key={i}
                             id={i + 1}
@@ -140,41 +147,47 @@ export default class TestAttachment extends Component {
                             handleSelection={this.handleSelection}
                         />
                     })} */}
-                    {this.state.questions.high_avoidance_questions.map((high_avoidance_question, i) => {
-                        return <TestItem
-                            key={i}
-                            id={this.state.questions.high_anxiety_questions.length + i + 1}
-                            scores={this.state.scores}
-                            values={this.state.values[1]+"-"+this.state.questions.high_anxiety_questions.length+i+1}
-                            high_avoidance_question={high_avoidance_question}
-                            handleSelection={this.handleSelection}
-                        />
-                    })}
-                    {this.state.questions.low_avoidance_questions.map((low_avoidance_question, i) => {
-                        return <TestItem
-                            key={i}
-                            id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + i + 1}
-                            scores={this.state.scores_reversed}
-                            values={this.state.values[1]+"-"+this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length +i+1}
-                            low_avoidance_question={low_avoidance_question}
-                            handleSelection={this.handleSelection}
-                        />
-                    })}
-                    {this.state.questions.low_anxiety_questions.map((low_anxiety_question, i) => {
-                        return <TestItem
-                            key={i}
-                            id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + this.state.questions.low_avoidance_questions.length + i + 1}
-                            scores={this.state.scores_reversed}
-                            values={this.state.values[0]+"-"+i+1}
-                            low_anxiety_question={low_anxiety_question}
-                            handleSelection={this.handleSelection}
-                        />
-                    })}
-
-
-                </form>
+                                {this.state.questions.high_avoidance_questions.map((high_avoidance_question, i) => {
+                                    return <TestItem
+                                        key={i}
+                                        id={this.state.questions.high_anxiety_questions.length + i + 1}
+                                        scores={this.state.scores}
+                                        values={this.state.values[1] + "-" + this.state.questions.high_anxiety_questions.length + i + 1}
+                                        high_avoidance_question={high_avoidance_question}
+                                        handleSelection={this.handleSelection}
+                                    />
+                                })}
+                                {this.state.questions.low_avoidance_questions.map((low_avoidance_question, i) => {
+                                    return <TestItem
+                                        key={i}
+                                        id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + i + 1}
+                                        scores={this.state.scores_reversed}
+                                        values={this.state.values[1] + "-" + this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + i + 1}
+                                        low_avoidance_question={low_avoidance_question}
+                                        handleSelection={this.handleSelection}
+                                    />
+                                })}
+                                {this.state.questions.low_anxiety_questions.map((low_anxiety_question, i) => {
+                                    return <TestItem
+                                        key={i}
+                                        id={this.state.questions.high_anxiety_questions.length + this.state.questions.high_avoidance_questions.length + this.state.questions.low_avoidance_questions.length + i + 1}
+                                        scores={this.state.scores_reversed}
+                                        values={this.state.values[0] + "-" + i + 1}
+                                        low_anxiety_question={low_anxiety_question}
+                                        handleSelection={this.handleSelection}
+                                    />
+                                })}
+                            </Paper>
+                        </Card>
+                    </form>
                 </div>
-                <button onClick={() => this.handleSubmit()}>See Your Results</button>
+                <div className="center">
+                    <Button
+                        onClick={() => this.handleSubmit()}
+                        variant="contained"
+                        color="secondary"
+                    >See Your Results</Button>
+                </div>
             </main>
         )
     }

@@ -8,8 +8,6 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
@@ -28,11 +26,8 @@ const useStyles = makeStyles(theme => ({
         },
     },
     root: {
-        // padding: '10px 40px 10px',
         display: 'flex',
         justifyContent: 'flex-start',
-        // "flex-wrap": 'wrap',
-        // margin: '30px',
         'border-radius': '10px',
         content: {
             height: 3,
@@ -46,8 +41,6 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'flex-start',
         "flex-wrap": 'wrap',
-        // alignContent: "space-between",
-        // margin: '30px',
         'border-radius': '10px',
     },
     buttons: {

@@ -67,7 +67,7 @@ export default class MyMatchList extends Component {
                     <h2 className="title">My Matches</h2>
 
                 </div>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', 'flexWrap': 'wrap', 'justifyContent': 'center' }}>
                     {this.state.matches.matches && this.state.matches.matches.map((match, i) => {
                         return <MyMatchItem i={i} match_id={this.state.matches.match_ids[i]} id={parseInt(match.url.split("/")[match.url.split("/").length - 1])} key={match.url.split("/")[match.url.split("/").length - 1]} match={match} handleUnmatch={this.handleUnmatch} currentUser={this.state.currentUser} viewMessage={this.props.viewMessage} />
                     })

@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 1000,
+    // height: 1000,
   },
   container: {
     display: 'flex',

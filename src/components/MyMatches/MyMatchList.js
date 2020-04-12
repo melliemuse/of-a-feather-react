@@ -8,11 +8,8 @@ export default class MyMatchList extends Component {
         currentUser: null
     }
 
-    componentDidMount = () => {
-        APIManager.getAll(`daters`)
-            .then(currentDater => {
-                this.setState({ currentUser: currentDater[0] })
-                APIManager.getAll(`matches?match_status_id=2`)
+    getMatches = () => {
+        APIManager.getAll(`matches?match_status_id=2`)
                     .then(response => {
                         let matches = []
                         let match_ids = []
@@ -33,6 +30,13 @@ export default class MyMatchList extends Component {
                         })
                         this.setState({ matches: matchObj })
                     })
+    }
+
+    componentDidMount = () => {
+        APIManager.getAll(`daters`)
+            .then(currentDater => {
+                this.setState({ currentUser: currentDater[0] })
+                this.getMatches()
             }
             )
 
@@ -49,8 +53,7 @@ export default class MyMatchList extends Component {
             }
             APIManager.patch(`matches`, itemToUpdate)
                 .then(() => {
-                    APIManager.getAll(`matches?match_status_id=2`)
-                        .then(response => this.setState({ matches: response }))
+                    this.getMatches()
                 })
         }
     }

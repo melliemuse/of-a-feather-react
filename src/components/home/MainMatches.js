@@ -20,12 +20,17 @@ export default function MainMatches(props) {
     },
     paper: {
       margin: theme.spacing(3),
+      height: '885px',
+      width: '380px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignContent: 'space-around'
     },
   }));
 
   const classes = useStyles();
   
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
       
   const handleChange = () => {
     setChecked(prev => !prev);
@@ -41,7 +46,7 @@ export default function MainMatches(props) {
       />
       <Collapse in={checked} collapsedHeight={525}>
       <Paper elevation={8} className={classes.paper}>
-        <div style={{padding: "0px 50px", 'margin': '20px'}}>
+        <div style={{'margin': '20px'}}>
         <img id="profile_pic" src={props.match.profile_pic}></img>
         <h3>{props.match.user.first_name}</h3>
         <p>{props.match.age}</p>

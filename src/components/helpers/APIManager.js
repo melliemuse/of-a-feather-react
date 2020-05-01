@@ -27,6 +27,7 @@ export default {
         }).then(response => response.json)
     },
     update(endpoint, itemToUpdate) {
+        console.log(itemToUpdate, itemToUpdate.id)
         return fetch(`${Settings.remote_URL}/${endpoint}/${itemToUpdate.id}`, {
             method: "PUT",
             headers: {

@@ -103,7 +103,13 @@ export default class TestAttachment extends Component {
         let updater = this.state.dater
         console.log(this.state.dater)
         updater.attachment_style_id = dater_attachment_id
+        updater.username = this.state.dater.user.username
+        updater.first_name = this.state.dater.user.first_name
+        updater.last_name = this.state.dater.user.last_name
+        updater.email = this.state.dater.user.email
+        updater.password = this.state.dater.user.password
         console.log(updater)
+        console.log(updater.id)
 
         APIManager.update("daters", updater)
             .then(this.props.history.push("/"))

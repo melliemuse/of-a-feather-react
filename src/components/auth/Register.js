@@ -185,13 +185,13 @@ class Register extends Component {
                             className="form-control"
                             id="gender_preference"
                             onChange={this.handleInputChange}>
-                            <option value="Female">
+                            <option value="female">
                                 Female
                   </option>
-                            <option value="Male">
+                            <option value="male">
                                 Male
                   </option>
-                            <option value="All">
+                            <option value="all">
                                 All
                   </option>
                         </select>

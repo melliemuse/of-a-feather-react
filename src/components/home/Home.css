@@ -6,8 +6,21 @@
 #profile_pic {
     max-width: 345px;
     height: auto;
+    max-height: 461px;
+    /* box-shadow: 2px 3px 10px darkslategray; */
+    overflow: hidden;
+}
+.img-wd {
+    /* max-width: 345px; */
+    /* height: auto; */
     max-height: 431px;
-    box-shadow: 2px 3px 10px darkslategray;
+    display: block;
+    margin: auto;
+}
+.img-lg {
+    max-width: 345px;
+    height: auto;
+    max-height: 431px;
 }
 .matchContainer {
     display: flex;

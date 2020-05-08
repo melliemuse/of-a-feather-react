@@ -36,6 +36,7 @@ export default function MainMatches(props) {
     setChecked(prev => !prev);
   };
 
+  // debugger
 
   return (
     < >
@@ -47,7 +48,14 @@ export default function MainMatches(props) {
       <Collapse in={checked} collapsedHeight={525}>
       <Paper elevation={8} className={classes.paper}>
         <div style={{'margin': '20px'}}>
-        <img id="profile_pic" src={props.match.profile_pic}></img>
+          <div  id="profile_pic">
+            
+            <img 
+            className={
+                'img-wd' 
+          } 
+            src={props.match.profile_pic}></img>
+          </div>
         <h3>{props.match.user.first_name}</h3>
         <p>{props.match.age}</p>
         {props.match.smoker && <p>Smoker</p>}

@@ -51,8 +51,10 @@ const useStyles = makeStyles(theme => ({
         
         {/* <Collapse in={checked} collapsedHeight={600}> */}
           <Paper elevation={4} className={classes.paper}>
-              <div style={{padding: "50px"}}>
-          <img id="profile_pic" src={props.match.profile_pic} alt='avatar'></img>
+              <div style={{padding: "100px"}}>
+              <div id="profile_pic">
+          <img className='img-wd'  src={props.match.profile_pic} alt='avatar'></img>
+          </div>
                 <h3>{props.match.user.first_name}</h3>
                 <button onClick={handleClick}>View Messages</button>
                 <button onClick={() => props.handleUnmatch(props.i)}>Unmatch</button>

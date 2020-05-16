@@ -3,6 +3,11 @@ import Mike from "../assets/default_avatar.png"
 import APIManager from '../helpers/APIManager'
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 export default class EditUserProfile extends Component {
 
@@ -78,6 +83,7 @@ export default class EditUserProfile extends Component {
     }
 
     handleInputChange = (evt) => {
+        debugger
         let stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
@@ -205,7 +211,24 @@ export default class EditUserProfile extends Component {
                         </select>
 
                     </fieldset>
-                    <fieldset>
+                    <FormControl >
+                        <InputLabel id="inputGenderPreference">Gender Preference</InputLabel>
+                        <Select
+                        labelId="inputGenderPreference"
+                        id="gender_preference"
+                        value={this.state.gender_preference}
+                        onChange={this.handleInputChange}
+                        autoWidth
+                        >
+                        <MenuItem value="" selected>
+                        </MenuItem>
+                        <MenuItem value={"female"} selected={this.state.gender_preference === "female"}>Female</MenuItem>
+                        <MenuItem value={"male"} selected={this.state.gender_preference === "male"}>Male</MenuItem>
+                        <MenuItem value={"all"} selected={this.state.gender_preference === "all"}>All</MenuItem>
+                        </Select>
+                        <FormHelperText>Auto width</FormHelperText>
+                    </FormControl>
+                    {/* <fieldset>
                         <label htmlFor="inputGenderPreference"> Gender Preference </label>
                         <select
                             className="form-control"
@@ -222,7 +245,7 @@ export default class EditUserProfile extends Component {
                                 all
                       </option>
                         </select>
-                    </fieldset>
+                    </fieldset> */}
                     <fieldset>
                         <label>Do you have kids?</label>
                         <select

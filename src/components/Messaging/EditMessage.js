@@ -25,7 +25,7 @@ export default function EditMessage(props) {
         })
     }, [])
 
-    console.log(props.message.id)
+    // console.log(props.message.id)
 
     
 

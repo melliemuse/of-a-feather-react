@@ -28,7 +28,7 @@ export default function MainMatches(props) {
     },
   }));
 
-  const [ myClassName, setMyClassName ] = useState([])
+  const [myClassName, setMyClassName] = useState([])
 
   const classes = useStyles();
 
@@ -38,9 +38,9 @@ export default function MainMatches(props) {
     let width = target.naturalWidth
     let height = target.naturalHeight
     console.log("WIDTH", width, "HEIGHT", height)
-     width > height ?
-    setMyClassName('img-wd')
-    : setMyClassName('img-lg')
+    width > height ?
+      setMyClassName('img-wd')
+      : setMyClassName('img-lg')
   }
 
   const handleChange = () => {
@@ -56,38 +56,40 @@ export default function MainMatches(props) {
           control={<Switch checked={checked} onChange={handleChange} />}
           label="Show"
         />
-        <Collapse in={checked} collapsedHeight={525}>
+        <Collapse in={checked} collapsedHeight={545}>
           <Paper elevation={8} className={classes.paper}>
             <div style={{ 'margin': '20px' }}>
               <div id="profile_pic">
-                <img 
+                <img
                   className={myClassName && myClassName}
-                  src={props.match.profile_pic} 
+                  src={props.match.profile_pic}
                   onLoad={assignClass}
                 />
               </div>
-              <h3>{props.match.user.first_name}</h3>
-              <p>{props.match.age}</p>
-              {props.match.smoker && <p>Smoker</p>}
-              {props.match.kids && <p>Has kids</p>}
-              <h4>Lives in </h4>
-              <p>{props.match.location}</p>
-              <h4>Looking for</h4>
-              <p> {props.match.looking_for}</p>
-              <h4>Tagline</h4>
+              <div className="profile-info">
+                <h3>{props.match.user.first_name}</h3>
+                <p>{props.match.age}</p>
+                {props.match.smoker && <p>Smoker</p>}
+                {props.match.kids && <p>Has kids</p>}
+                <h4>Lives in </h4>
+                <p>{props.match.location}</p>
+                <h4>Looking for</h4>
+                <p> {props.match.looking_for}</p>
+                <h4>Tagline</h4>
 
-              <p className='tagline'>"{props.match.tagline}"</p>
-
-
-
-              <IconButton onClick={() => props.handleMatch(props.match.id)} color="inherit">
-                <FavoriteIcon />
-              </IconButton>
+                <p className='tagline'>"{props.match.tagline}"</p>
 
 
-              <IconButton onClick={() => props.handlePass(props.match.id, props.iterator)}>
-                <BlockTwoToneIcon />
-              </IconButton>
+
+                <IconButton onClick={() => props.handleMatch(props.match.id)} color="inherit">
+                  <FavoriteIcon />
+                </IconButton>
+
+
+                <IconButton onClick={() => props.handlePass(props.match.id, props.iterator)}>
+                  <BlockTwoToneIcon />
+                </IconButton>
+              </div>
             </div>
           </Paper>
         </Collapse>

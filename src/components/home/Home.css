@@ -27,6 +27,10 @@
     height: auto;
     max-height: 431px;
 }
+.profile-info {
+    margin-left: 15px;
+
+}
 .matchContainer {
     display: flex;
     flex-wrap: wrap;

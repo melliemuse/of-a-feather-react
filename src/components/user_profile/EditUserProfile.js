@@ -180,46 +180,40 @@ export default class EditUserProfile extends Component {
                             value={this.state.first_name}
                             autoFocus
                         />
-                                {/* <fieldset>
-                                    <label htmlFor="first_name"> First Name </label>
-                                    <input onChange={this.handleInputChange}
-                                        id="first_name"
-                                        type="text"
-                                        name="first_name"
-                                        className="form-control"
-                                        value={this.state.first_name}
-                                        autoFocus />
-                                </fieldset> */}
-                                <fieldset>
-                                    <label htmlFor="last_name"> Last Name </label>
-                                    <input onChange={this.handleInputChange}
-                                        id="last_name"
-                                        type="text"
-                                        name="last_name"
-                                        className="form-control"
-                                        value={this.state.last_name}
-                                    />
-                                </fieldset>
-                                <fieldset>
-                                    <label htmlFor="inputLocation"> Location </label>
-                                    <input onChange={this.handleInputChange}
-                                        id="location"
-                                        type="text"
-                                        name="location"
-                                        className="form-control"
-                                        value={this.state.location}
-                                    />
-                                </fieldset>
-                                <fieldset>
-                                    <label htmlFor="inputBio"> Bio </label>
-                                    <input onChange={this.handleInputChange}
-                                        id="bio"
-                                        type="text"
-                                        name="bio"
-                                        className="form-control"
-                                        value={this.state.bio}
-                                    />
-                                </fieldset>
+
+
+                        <TextField
+                        onChange={(evt) => this.handleInputChange(evt)}
+                            id="last_name"
+                            label="Last Name"
+                            helperText="Last Name"
+                            variant="outlined"
+                            value={this.state.last_name}
+                            autoFocus
+                        />
+
+                        <TextField
+                        onChange={(evt) => this.handleInputChange(evt)}
+                            id="location"
+                            label="Location"
+                            helperText="Location"
+                            variant="outlined"
+                            value={this.state.location}
+                            autoFocus
+                        />
+
+
+                        <TextField
+                        onChange={(evt) => this.handleInputChange(evt)}
+                            id="bio"
+                            label="Bio"
+                            helperText="Bio"
+                            variant="outlined"
+                            value={this.state.bio}
+                            autoFocus
+                        />
+
+                                
 
 
                                 <FormControl variant={"outlined"}>

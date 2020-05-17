@@ -86,7 +86,38 @@ export default class EditUserProfile extends Component {
     handleInputChange = (evt) => {
         debugger
         let stateToChange = {}
-        stateToChange[evt.target.id] = evt.target.value
+        stateToChange[evt.currentTarget.id] = evt.target.value
+        this.setState(stateToChange)
+    }
+
+        
+
+   
+//     _handleInputChangeParams = (event, index, value) => {
+//         // let e = _.cloneDeep(evt); // Here I'm using the cloneDeep method provided by underscore / lodash . User whatever library you prefer. 
+//         // console.log(e.target.id); 
+//         // console.log(e.target.name);
+
+//         let e = event.native; // This looks the same as a vanilla JS event
+//   console.log(e.target.id); 
+//   console.log(e.target.name); 
+
+// //         event.persist() // This stops react from garbage collecting the event object. It may impact performance, but I doubt by much.
+// //   console.log(event.target.id); 
+// //   console.log(event.target.name);
+
+//         // debugger
+//         // let stateToChange = {}
+//         // stateToChange['id'] = evt.target.value
+//         // this.setState(stateToChange)
+//     }
+
+
+    handleInputChangeParams = (event) => {
+
+        console.log(event.target.value, event.target.name)
+        let stateToChange = {}
+        stateToChange[event.target.name] = event.target.value
         this.setState(stateToChange)
     }
 
@@ -217,13 +248,15 @@ export default class EditUserProfile extends Component {
                                 </select>
 
                             </fieldset>
+
                             <FormControl >
-                                <InputLabel id="inputGenderPreference">Gender Preference</InputLabel>
+                                {/* <InputLabel id="gender_preference">Gender Preference</InputLabel> */}
                                 <Select
-                                    labelId="inputGenderPreference"
+                                    // labelId="gender_preference"
                                     id="gender_preference"
+                                    name="gender_preference"
                                     value={this.state.gender_preference}
-                                    onChange={this.handleInputChange}
+                                    onChange={this.handleInputChangeParams.bind(this)}
                                     autoWidth
                                 >
                                     <MenuItem value="" selected>
@@ -232,27 +265,10 @@ export default class EditUserProfile extends Component {
                                     <MenuItem value={"male"} selected={this.state.gender_preference === "male"}>Male</MenuItem>
                                     <MenuItem value={"all"} selected={this.state.gender_preference === "all"}>All</MenuItem>
                                 </Select>
-                                <FormHelperText>Auto width</FormHelperText>
+                                <FormHelperText>Gender Preference</FormHelperText>
                             </FormControl>
-                            {/* <fieldset>
-                        <label htmlFor="inputGenderPreference"> Gender Preference </label>
-                        <select
-                            className="form-control"
-                            id="gender_preference"
-                            onChange={this.handleInputChange}>
-                            value={this.state.gender_preference}
-                            <option value="female" selected={this.state.gender_preference === "female"}>
-                                female
-                      </option>
-                            <option value="male" selected={this.state.gender_preference === "male"}>
-                                male
-                      </option>
-                            <option value="all" selected={this.state.gender_preference === "all"}>
-                                all
-                      </option>
-                        </select>
-                    </fieldset> */}
                             <fieldset>
+
                                 <label>Do you have kids?</label>
                                 <select
                                     className="form-control"

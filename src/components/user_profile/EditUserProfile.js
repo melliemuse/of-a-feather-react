@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 export default class EditUserProfile extends Component {
 
@@ -91,7 +92,6 @@ export default class EditUserProfile extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        // debugger
         // Create object with values from state
         const updatedUser = {
             "id": this.state.id,
@@ -119,7 +119,7 @@ export default class EditUserProfile extends Component {
         // Make a fetch call with the object as the body of the POST request
         APIManager.update("daters", updatedUser)
             .then(() => console.log(this.state))
-        .then(()=> {this.props.history.push('/userprofile')})
+            .then(() => { this.props.history.push('/userprofile') })
     }
 
     render() {
@@ -129,106 +129,112 @@ export default class EditUserProfile extends Component {
 
             <main style={{ textAlign: "center" }} className="main">
                 <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
-              <div style={{padding: "50px"}}>
-                <h1 className="profileTitle">Edit Your Profile</h1>
-                <div className="center">
-                <div className="pictureUpload">
-                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300"></img>}
-                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
-                <button onClick={this.uploadWidget}>Change Your Profile Picture</button>
-                </div>
-
-                </div>
-
-                <form className="form--login" onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        <label htmlFor="username"> Username </label>
-                        <input onChange={(evt) => this.handleInputChange(evt)}
-                            id="username"
-                            type="text"
-                            name="username"
-                            className="form-control"
-                            value={this.state.username}
-                            autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="first_name"> First Name </label>
-                        <input onChange={this.handleInputChange}
-                            id="first_name"
-                            type="text"
-                            name="first_name"
-                            className="form-control"
-                            value={this.state.first_name}
-                            autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="last_name"> Last Name </label>
-                        <input onChange={this.handleInputChange}
-                            id="last_name"
-                            type="text"
-                            name="last_name"
-                            className="form-control"
-                            value={this.state.last_name}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputLocation"> Location </label>
-                        <input onChange={this.handleInputChange}
-                            id="location"
-                            type="text"
-                            name="location"
-                            className="form-control"
-                            value={this.state.location}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputBio"> Bio </label>
-                        <input onChange={this.handleInputChange}
-                            id="bio"
-                            type="text"
-                            name="bio"
-                            className="form-control"
-                            value={this.state.bio}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputGender"> Gender </label>
-                        <select
-                            className="form-control"
-                            id="gender"
-                            onChange={this.handleInputChange}>
-                            value={this.state.gender}
-
-                            <option value="female" selected={this.state.gender === "female"}>
-                                female
-                      </option>
-                            <option value="male" selected={this.state.gender === "male"}>
-                                male
-                      </option>
-                            <option value="other" selected={this.state.gender === "other"}>
-                                other
-                      </option>
-                        </select>
-
-                    </fieldset>
-                    <FormControl >
-                        <InputLabel id="inputGenderPreference">Gender Preference</InputLabel>
-                        <Select
-                        labelId="inputGenderPreference"
-                        id="gender_preference"
-                        value={this.state.gender_preference}
-                        onChange={this.handleInputChange}
-                        autoWidth
+                        <h1 style={{padding: "50px"}} className="profileTitle">Edit Your Profile</h1>
+                        <div className="center">
+                            <div className="pictureUpload">
+                                {!this.state.profile_pic && <img src={Mike} alt='profile' width="300" height="300"></img>}
+                                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+                                <Button
+                            variant="contained"
+                            color="primary"
+                            size="medium"
+                            onClick={this.uploadWidget}
+                            startIcon={<PhotoCamera />}
                         >
-                        <MenuItem value="" selected>
-                        </MenuItem>
-                        <MenuItem value={"female"} selected={this.state.gender_preference === "female"}>Female</MenuItem>
-                        <MenuItem value={"male"} selected={this.state.gender_preference === "male"}>Male</MenuItem>
-                        <MenuItem value={"all"} selected={this.state.gender_preference === "all"}>All</MenuItem>
-                        </Select>
-                        <FormHelperText>Auto width</FormHelperText>
-                    </FormControl>
-                    {/* <fieldset>
+                        </Button>
+                                {/* <button onClick={this.uploadWidget}>Change Your Profile Picture</button> */}
+                        </div>
+
+                    <div style={{"textAlign": "left" }}>
+                        <form className="form--login" onSubmit={this.handleSubmit}>
+                            <fieldset>
+                                <label htmlFor="username"> Username </label>
+                                <input onChange={(evt) => this.handleInputChange(evt)}
+                                    id="username"
+                                    type="text"
+                                    name="username"
+                                    className="form-control"
+                                    value={this.state.username}
+                                    autoFocus />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="first_name"> First Name </label>
+                                <input onChange={this.handleInputChange}
+                                    id="first_name"
+                                    type="text"
+                                    name="first_name"
+                                    className="form-control"
+                                    value={this.state.first_name}
+                                    autoFocus />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="last_name"> Last Name </label>
+                                <input onChange={this.handleInputChange}
+                                    id="last_name"
+                                    type="text"
+                                    name="last_name"
+                                    className="form-control"
+                                    value={this.state.last_name}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputLocation"> Location </label>
+                                <input onChange={this.handleInputChange}
+                                    id="location"
+                                    type="text"
+                                    name="location"
+                                    className="form-control"
+                                    value={this.state.location}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputBio"> Bio </label>
+                                <input onChange={this.handleInputChange}
+                                    id="bio"
+                                    type="text"
+                                    name="bio"
+                                    className="form-control"
+                                    value={this.state.bio}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputGender"> Gender </label>
+                                <select
+                                    className="form-control"
+                                    id="gender"
+                                    onChange={this.handleInputChange}>
+                                    value={this.state.gender}
+
+                                    <option value="female" selected={this.state.gender === "female"}>
+                                        female
+                      </option>
+                                    <option value="male" selected={this.state.gender === "male"}>
+                                        male
+                      </option>
+                                    <option value="other" selected={this.state.gender === "other"}>
+                                        other
+                      </option>
+                                </select>
+
+                            </fieldset>
+                            <FormControl >
+                                <InputLabel id="inputGenderPreference">Gender Preference</InputLabel>
+                                <Select
+                                    labelId="inputGenderPreference"
+                                    id="gender_preference"
+                                    value={this.state.gender_preference}
+                                    onChange={this.handleInputChange}
+                                    autoWidth
+                                >
+                                    <MenuItem value="" selected>
+                                    </MenuItem>
+                                    <MenuItem value={"female"} selected={this.state.gender_preference === "female"}>Female</MenuItem>
+                                    <MenuItem value={"male"} selected={this.state.gender_preference === "male"}>Male</MenuItem>
+                                    <MenuItem value={"all"} selected={this.state.gender_preference === "all"}>All</MenuItem>
+                                </Select>
+                                <FormHelperText>Auto width</FormHelperText>
+                            </FormControl>
+                            {/* <fieldset>
                         <label htmlFor="inputGenderPreference"> Gender Preference </label>
                         <select
                             className="form-control"
@@ -246,129 +252,129 @@ export default class EditUserProfile extends Component {
                       </option>
                         </select>
                     </fieldset> */}
-                    <fieldset>
-                        <label>Do you have kids?</label>
-                        <select
-                            className="form-control"
-                            id="kids"
-                            onChange={this.handleInputChange}>
-                            value={this.state.kids}
-                            <option value={0} selected={this.state.kids === 0 || this.state.kids === false}>
-                                No
+                            <fieldset>
+                                <label>Do you have kids?</label>
+                                <select
+                                    className="form-control"
+                                    id="kids"
+                                    onChange={this.handleInputChange}>
+                                    value={this.state.kids}
+                                    <option value={0} selected={this.state.kids === 0 || this.state.kids === false}>
+                                        No
                       </option>
-                            <option value={1} selected={this.state.kids === 1 || this.state.kids === true}>
-                                Yes
+                                    <option value={1} selected={this.state.kids === 1 || this.state.kids === true}>
+                                        Yes
                       </option>
-                        </select>
-                    </fieldset>
-                    <fieldset>
-                        <label>Do you smoke?</label>
-                        <select
-                            className="form-control"
-                            id="smoker"
-                            onChange={this.handleInputChange}>
-                            value={this.state.smoker}
-                            <option value={0} selected={this.state.smoker === 0 || this.state.smoker === false}>
-                                No
+                                </select>
+                            </fieldset>
+                            <fieldset>
+                                <label>Do you smoke?</label>
+                                <select
+                                    className="form-control"
+                                    id="smoker"
+                                    onChange={this.handleInputChange}>
+                                    value={this.state.smoker}
+                                    <option value={0} selected={this.state.smoker === 0 || this.state.smoker === false}>
+                                        No
                       </option>
-                            <option value={1} selected={this.state.smoker === 1 || this.state.smoker === true}>
-                                Yes
+                                    <option value={1} selected={this.state.smoker === 1 || this.state.smoker === true}>
+                                        Yes
                       </option>
-                        </select>
-                    </fieldset>
+                                </select>
+                            </fieldset>
 
-                    <fieldset>
-                        <label>What are you looking for?</label>
-                        <select
-                            className="form-control"
-                            id="looking_for"
-                            value={this.state.looking_for}
-                            onChange={this.handleInputChange}>
-                            <option value="relationship" selected={this.state.looking_for === "relationship"}>
-                                Relationship
+                            <fieldset>
+                                <label>What are you looking for?</label>
+                                <select
+                                    className="form-control"
+                                    id="looking_for"
+                                    value={this.state.looking_for}
+                                    onChange={this.handleInputChange}>
+                                    <option value="relationship" selected={this.state.looking_for === "relationship"}>
+                                        Relationship
                       </option>
-                            <option value="something casual" selected={this.state.looking_for === "something casual"}>
-                                Something Casual
+                                    <option value="something casual" selected={this.state.looking_for === "something casual"}>
+                                        Something Casual
                       </option>
-                            <option value="unsure" selected={this.state.looking_for === "unsure"}>
-                                Unsure
+                                    <option value="unsure" selected={this.state.looking_for === "unsure"}>
+                                        Unsure
                       </option>
-                        </select>
-                    </fieldset>
+                                </select>
+                            </fieldset>
 
-                    <fieldset>
-                        <label htmlFor="inputInterests"> Interests </label>
-                        <input onChange={this.handleInputChange}
-                            id="interests"
-                            type="text"
-                            name="interests"
-                            value={this.state.interests}
-                            className="form-control"
-                        />
-                    </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputInterests"> Interests </label>
+                                <input onChange={this.handleInputChange}
+                                    id="interests"
+                                    type="text"
+                                    name="interests"
+                                    value={this.state.interests}
+                                    className="form-control"
+                                />
+                            </fieldset>
 
 
-                    <fieldset>
-                        <label htmlFor="inputAge"> Age </label>
-                        <input onChange={this.handleInputChange}
-                            id="age"
-                            type="number"
-                            name="age"
-                            className="form-control"
-                            value={this.state.age}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputAgeRange"> Age Range </label>
-                        <input onChange={this.handleInputChange}
-                            id="age_range1"
-                            type="number"
-                            min="13" max="100" step="1"
-                            name="age_range"
-                            className="form-control"
-                            value={this.state.age_range1}
-                        />
-                        <input onChange={this.handleInputChange}
-                            id="age_range2"
-                            type="number"
-                            min="13" max="100" step="1"
-                            name="age_range"
-                            className="form-control"
-                            value={this.state.age_range2}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputTagline"> Tagline </label>
-                        <input onChange={this.handleInputChange}
-                            id="tagline"
-                            type="text"
-                            name="tagline"
-                            value={this.state.tagline}
-                            className="form-control"
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input onChange={this.handleInputChange}
-                            id="email"
-                            type="email"
-                            name="email"
-                            className="form-control"
-                            value={this.state.email}
-                            placeholder="Email address"
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputPassword"> Update Password </label>
-                        <input onChange={this.handleInputChange}
-                            id="password"
-                            type="password"
-                            name="password"
-                            value={this.state.password}
-                            className="form-control"
-                        />
-                    </fieldset>
-                    {/* <fieldset>
+                            <fieldset>
+                                <label htmlFor="inputAge"> Age </label>
+                                <input onChange={this.handleInputChange}
+                                    id="age"
+                                    type="number"
+                                    name="age"
+                                    className="form-control"
+                                    value={this.state.age}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputAgeRange"> Age Range </label>
+                                <input onChange={this.handleInputChange}
+                                    id="age_range1"
+                                    type="number"
+                                    min="13" max="100" step="1"
+                                    name="age_range"
+                                    className="form-control"
+                                    value={this.state.age_range1}
+                                />
+                                <input onChange={this.handleInputChange}
+                                    id="age_range2"
+                                    type="number"
+                                    min="13" max="100" step="1"
+                                    name="age_range"
+                                    className="form-control"
+                                    value={this.state.age_range2}
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputTagline"> Tagline </label>
+                                <input onChange={this.handleInputChange}
+                                    id="tagline"
+                                    type="text"
+                                    name="tagline"
+                                    value={this.state.tagline}
+                                    className="form-control"
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputEmail"> Email address </label>
+                                <input onChange={this.handleInputChange}
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    className="form-control"
+                                    value={this.state.email}
+                                    placeholder="Email address"
+                                />
+                            </fieldset>
+                            <fieldset>
+                                <label htmlFor="inputPassword"> Update Password </label>
+                                <input onChange={this.handleInputChange}
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    className="form-control"
+                                />
+                            </fieldset>
+                            {/* <fieldset>
                         <label htmlFor="verifyPassword"> Verify Password </label>
                         <input onChange={this.handleInputChange}
                             id="verifyPassword"
@@ -378,18 +384,19 @@ export default class EditUserProfile extends Component {
                             placeholder="Verify password"
                         />
                     </fieldset> */}
-                    <fieldset>
+                            <fieldset>
 
-                        <Button 
-                        type="submit"
-                        variant='contained'
-                        color='secondary'
-                        >
-                            Make Changes
+                                <Button
+                                    type="submit"
+                                    variant='contained'
+                                    color='secondary'
+                                >
+                                    Make Changes
                 </Button>
-                    </fieldset>
-                </form>
-                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    </div>
                 </Paper>
             </main>
         )

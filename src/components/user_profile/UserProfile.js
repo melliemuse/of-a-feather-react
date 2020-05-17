@@ -62,65 +62,65 @@ export default class UserProfile extends Component {
     render() {
         return (
             <>
-                <main style={{ textAlign: "center" }} className='main'>
-                    <div>
-
+                <main className='main'>
                     <h1 className="profileTitle">User Profile</h1>
-                    </div>
                     <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
-              <div style={{padding: "50px"}}>
-                    <div className="center">
-                            {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
-                    </div>
-                    <h3>Username</h3>
-                    <p>{this.state.userName}</p>
+                        <div style={{ padding: "50px" }}>
+                            <div className="center">
+                                {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
+                            </div>
+                            <div className='profile'>
+                                <h3>Username</h3>
+                                <p>{this.state.userName}</p>
 
-                    <h3> First Name </h3>
-                    <p>{this.state.first_name}</p>
+                                <h3> First Name </h3>
+                                <p>{this.state.first_name}</p>
 
-                    <h3> Last Name </h3>
-                    <p>{this.state.last_name}</p>
+                                <h3> Last Name </h3>
+                                <p>{this.state.last_name}</p>
 
-                    <h3> Location </h3>
-                    <p>{this.state.location}</p>
+                                <h3> Location </h3>
+                                <p>{this.state.location}</p>
 
-                    <h3> Bio </h3>
-                    <p>{this.state.bio}</p>
+                                <h3> Bio </h3>
+                                <p>{this.state.bio}</p>
 
-                    <h3> Gender </h3>
-                    <p>{this.state.gender}</p>
+                                <h3> Gender </h3>
+                                <p>{this.state.gender}</p>
 
-                    <h3> Gender Preference </h3>
-                    <p>{this.state.gender_preference}</p>
+                                <h3> Gender Preference </h3>
+                                <p>{this.state.gender_preference}</p>
 
-                    <h3> Kids </h3>
-                    <p>{this.state.kids && 'Yes'}</p>
-                    <p>{!this.state.kids && 'No'}</p>
+                                <h3> Kids </h3>
+                                <p>{this.state.kids && 'Yes'}</p>
+                                <p>{!this.state.kids && 'No'}</p>
 
-                    <h3> Smoker </h3>
-                    <p>{this.state.smoker && 'Yes'}</p>
-                    <p>{!this.state.smoker && 'No'}</p>
+                                <h3> Smoker </h3>
+                                <p>{this.state.smoker && 'Yes'}</p>
+                                <p>{!this.state.smoker && 'No'}</p>
 
-                    <h3> Looking For </h3>
-                    <p>{this.state.looking_for}</p>
+                                <h3> Looking For </h3>
+                                <p>{this.state.looking_for}</p>
 
-                    <h3> Interests </h3>
-                    <p>{this.state.interests}</p>
+                                <h3> Interests </h3>
+                                <p>{this.state.interests}</p>
 
-                    <h3> Age </h3>
-                    <p>{this.state.age}</p>
+                                <h3> Age </h3>
+                                <p>{this.state.age}</p>
 
-                    <h3> Age Range </h3>
-                    <p>{this.state.age_range}</p>
+                                <h3> Age Range </h3>
+                                <p>{this.state.age_range}</p>
 
-                    <h3> Tagline </h3>
-                    <p className="tagline">{this.state.tagline}</p>
+                                <h3> Tagline </h3>
+                                <p className="tagline">{this.state.tagline}</p>
 
-                    <h3> Email </h3>
-                    <p>{this.state.email}</p>
+                                <h3> Email </h3>
+                                <p>{this.state.email}</p>
 
-                    <button onClick={() => { this.props.history.push('/editprofile') }}>Edit</button>
-                    </div>
+                                <button onClick={() => { this.props.history.push('/editprofile') }}>Edit</button>
+                            </div>
+
+                        </div>
                     </Paper>
                 </main >
 

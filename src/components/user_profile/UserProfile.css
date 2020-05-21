@@ -16,7 +16,7 @@
 .paper {
     margin: 0 auto;
     width: 445px;
-    height: 1400px
+    height: 1800px
   }
 .paper-long {
     margin: 0 auto;
@@ -38,4 +38,7 @@
     font-weight: 400;
     font-size: larger;
     color: rgba(50, 50, 50, 1)
+  }
+  .edit {
+      padding-top: 40px;
   }

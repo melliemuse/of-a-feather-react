@@ -69,6 +69,8 @@ export default class UserProfile extends Component {
                             <div className="center">
                                 {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
                             </div>
+                            </div>
+                        
                             <div className='profile'>
                                 <h3>Username</h3>
                                 <p>{this.state.userName}</p>
@@ -120,7 +122,7 @@ export default class UserProfile extends Component {
                                 <button onClick={() => { this.props.history.push('/editprofile') }}>Edit</button>
                             </div>
 
-                        </div>
+                        {/* </div> */}
                     </Paper>
                 </main >
 

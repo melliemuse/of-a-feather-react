@@ -141,7 +141,7 @@ export default class EditUserProfile extends Component {
         return (
 
             <main style={{ textAlign: "center" }} className="main">
-                <Paper elevation={4} className={'paper'} margin={'spacing(.25)'}>
+                <Paper elevation={4} className={'paper-long'} margin={'spacing(.25)'}>
                     <h1 style={{ padding: "50px" }} className="profileTitle">Edit Your Profile</h1>
                     <div className="center">
                         <div className="pictureUpload">
@@ -158,65 +158,76 @@ export default class EditUserProfile extends Component {
                         </div>
 
 
-                        <div style={{ "textAlign": "left" }}>
+                        <div className="form">
                             <form className="form--login" onSubmit={this.handleSubmit}>
 
-                        <TextField
-                        onChange={(evt) => this.handleInputChange(evt)}
-                            id="username"
-                            label="Username"
-                            helperText="Username"
-                            variant="outlined"
-                            value={this.state.username}
-                            autoFocus
-                        />
+                                <fieldset>
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
+                                        id="username"
+                                        // label="Username"
+                                        helperText="Username"
+                                        // variant="outlined"
+                                        value={this.state.username}
+                                        autoFocus
+                                    />
+                                </fieldset>
 
-                        <TextField
-                        onChange={(evt) => this.handleInputChange(evt)}
-                            id="first_name"
-                            label="First Name"
-                            helperText="First Name"
-                            variant="outlined"
-                            value={this.state.first_name}
-                            autoFocus
-                        />
+                                <fieldset>
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
+                                        id="first_name"
+                                        // label="First Name"
+                                        helperText="First Name"
+                                        // variant="outlined"
+                                        value={this.state.first_name}
+                                        autoFocus
+                                    />
+                                </fieldset>
 
-
-                        <TextField
-                        onChange={(evt) => this.handleInputChange(evt)}
-                            id="last_name"
-                            label="Last Name"
-                            helperText="Last Name"
-                            variant="outlined"
-                            value={this.state.last_name}
-                            autoFocus
-                        />
-
-                        <TextField
-                        onChange={(evt) => this.handleInputChange(evt)}
-                            id="location"
-                            label="Location"
-                            helperText="Location"
-                            variant="outlined"
-                            value={this.state.location}
-                            autoFocus
-                        />
+                                <fieldset>
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
+                                        id="last_name"
+                                        // label="Last Name"
+                                        helperText="Last Name"
+                                        // variant="outlined"
+                                        value={this.state.last_name}
+                                        autoFocus
+                                    />
+                                </fieldset>
 
 
-                        <TextField
-                        onChange={(evt) => this.handleInputChange(evt)}
-                            id="bio"
-                            label="Bio"
-                            helperText="Bio"
-                            variant="outlined"
-                            value={this.state.bio}
-                            autoFocus
-                        />
+                                <fieldset>
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
+                                        id="location"
+                                        // label="Location"
+                                        helperText="Location"
+                                        // variant="outlined"
+                                        value={this.state.location}
+                                        autoFocus
+                                    />
+                                </fieldset>
 
-                                
+                                <fieldset>
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
+                                        id="bio"
+                                        // label="Bio"
+                                        helperText="Bio"
+                                        // variant="outlined"
+                                        value={this.state.bio}
+                                        autoFocus
+                                    />
+                                </fieldset>
 
 
-                                <FormControl variant={"outlined"}>
+
+
+                                <FormControl
+                                // variant={"outlined"}
+                                >
                                     {/* <InputLabel id="gender">Gender</InputLabel> */}
                                     <Select
                                         // labelId="gender"
@@ -236,7 +247,7 @@ export default class EditUserProfile extends Component {
                                 </FormControl>
 
                                 <fieldset>
-                                    <FormControl variant={"outlined"}>
+                                    <FormControl >
                                         {/* <InputLabel id="gender_preference">Gender Preference</InputLabel> */}
                                         <Select
                                             // labelId="gender_preference"
@@ -257,7 +268,7 @@ export default class EditUserProfile extends Component {
                                 </fieldset>
 
                                 <fieldset>
-                                    <FormControl variant={"outlined"}>
+                                    <FormControl >
                                         <Select
                                             id="kids"
                                             name="kids"
@@ -275,7 +286,7 @@ export default class EditUserProfile extends Component {
                                 </fieldset>
 
                                 <fieldset>
-                                    <FormControl variant={"outlined"}>
+                                    <FormControl >
                                         <Select
                                             id="smoker"
                                             name="smoker"
@@ -292,7 +303,7 @@ export default class EditUserProfile extends Component {
                                     </FormControl>
                                 </fieldset>
 
-                                <FormControl variant={"outlined"}>
+                                <FormControl >
                                     <Select
                                         id="looking_for"
                                         name="looking_for"
@@ -312,27 +323,29 @@ export default class EditUserProfile extends Component {
                                 </FormControl>
 
                                 <fieldset>
-                                    <label htmlFor="inputInterests"> Interests </label>
-                                    <input onChange={this.handleInputChange}
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
                                         id="interests"
-                                        type="text"
-                                        name="interests"
+                                        // label="Interests"
+                                        helperText="interests"
+                                        // variant="outlined"
                                         value={this.state.interests}
-                                        className="form-control"
+                                        autoFocus
                                     />
                                 </fieldset>
-
 
                                 <fieldset>
-                                    <label htmlFor="inputAge"> Age </label>
-                                    <input onChange={this.handleInputChange}
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
                                         id="age"
-                                        type="number"
-                                        name="age"
-                                        className="form-control"
+                                        // label="Age"
+                                        helperText="age"
+                                        // variant="outlined"
                                         value={this.state.age}
+                                        autoFocus
                                     />
                                 </fieldset>
+
                                 <fieldset>
                                     <label htmlFor="inputAgeRange"> Age Range </label>
                                     <input onChange={this.handleInputChange}
@@ -353,46 +366,39 @@ export default class EditUserProfile extends Component {
                                     />
                                 </fieldset>
                                 <fieldset>
-                                    <label htmlFor="inputTagline"> Tagline </label>
-                                    <input onChange={this.handleInputChange}
+                                    <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
                                         id="tagline"
-                                        type="text"
-                                        name="tagline"
+                                        // label="Tagline"
+                                        helperText="tagline"
+                                        // variant="outlined"
                                         value={this.state.tagline}
-                                        className="form-control"
+                                        autoFocus
                                     />
                                 </fieldset>
                                 <fieldset>
-                                    <label htmlFor="inputEmail"> Email address </label>
-                                    <input onChange={this.handleInputChange}
+                                <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
                                         id="email"
-                                        type="email"
-                                        name="email"
-                                        className="form-control"
+                                        // label="Email"
+                                        helperText="email"
+                                        // variant="outlined"
                                         value={this.state.email}
-                                        placeholder="Email address"
+                                        autoFocus
                                     />
                                 </fieldset>
                                 <fieldset>
-                                    <label htmlFor="inputPassword"> Update Password </label>
-                                    <input onChange={this.handleInputChange}
+                                <TextField
+                                        onChange={(evt) => this.handleInputChange(evt)}
                                         id="password"
-                                        type="password"
-                                        name="password"
+                                        // label="Password"
+                                        helperText="password"
+                                        // variant="outlined"
                                         value={this.state.password}
-                                        className="form-control"
+                                        type="password"
+                                        autoFocus
                                     />
                                 </fieldset>
-                                {/* <fieldset>
-                        <label htmlFor="verifyPassword"> Verify Password </label>
-                        <input onChange={this.handleInputChange}
-                            id="verifyPassword"
-                            type="password"
-                            name="verifyPassword"
-                            className="form-control"
-                            placeholder="Verify password"
-                        />
-                    </fieldset> */}
                                 <fieldset>
 
                                     <Button

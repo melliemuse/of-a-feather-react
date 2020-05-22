@@ -66,8 +66,8 @@ export default class UserProfile extends Component {
             <>
                 <main className='main'>
                     <h1 className="profileTitle">User Profile</h1>
-                    <Paper elevation={4} className={'paper'} margin={'spacing(1)'}>
-                        <div style={{ padding: "50px" }}>
+                    <Paper elevation={4} className={'paper-long'} margin={'spacing(2)'}>
+                        <div >
                             <div className="center">
                                 {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
                             </div>

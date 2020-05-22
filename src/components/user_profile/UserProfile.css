@@ -24,6 +24,7 @@
     height: 2200px
   }
   .profile {
+      padding: 20px 0 0;
       margin-left: 80px;
       text-align: left;
   }
@@ -41,4 +42,7 @@
   }
   .edit {
       padding-top: 40px;
+  }
+  .profile p {
+      padding-bottom: 12px;
   }

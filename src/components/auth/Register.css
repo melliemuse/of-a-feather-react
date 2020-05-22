@@ -1,11 +1,13 @@
 .profile_pic_thumbnail {
     width: 200px;
     height: auto;
-    display: block;
+    /* display: block; */
     margin: 0 0 10px;
+    width: 100%;
+    text-align: center;
 }
 fieldset {
    border: none;
-   margin: 0;
-   padding: 12px;
+   margin: 5px 0;
+   padding: 10px;
 }

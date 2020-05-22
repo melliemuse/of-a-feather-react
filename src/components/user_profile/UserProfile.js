@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import APIManager from '../helpers/APIManager'
 import './UserProfile.css'
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import EditIcon from '@material-ui/icons/Edit';
 
 export default class UserProfile extends Component {
 
@@ -69,6 +71,8 @@ export default class UserProfile extends Component {
                             <div className="center">
                                 {this.state.profile_pic && <img className="profile_pic_thumbnail" src={this.state.profile_pic} alt='profile' width="300" height="300"></img>}
                             </div>
+                            </div>
+                        
                             <div className='profile'>
                                 <h3>Username</h3>
                                 <p>{this.state.userName}</p>
@@ -117,10 +121,17 @@ export default class UserProfile extends Component {
                                 <h3> Email </h3>
                                 <p>{this.state.email}</p>
 
-                                <button onClick={() => { this.props.history.push('/editprofile') }}>Edit</button>
+                                <Button 
+                                variant="contained" 
+                                color="secondary" 
+                                className="edit" 
+                                startIcon={<EditIcon />}
+                                onClick={() => { this.props.history.push('/editprofile') }}>
+                                    Edit
+                                </Button>
                             </div>
 
-                        </div>
+                        {/* </div> */}
                     </Paper>
                 </main >
 
